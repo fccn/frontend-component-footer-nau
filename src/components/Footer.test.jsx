@@ -7,7 +7,7 @@ import { AppContext } from '@edx/frontend-platform/react';
 
 import Footer from './Footer';
 
-const FooterWithContext = ({ locale = 'es' }) => {
+const FooterWithContext = ({ locale = 'pt-pt' }) => {
   const contextValue = useMemo(() => ({
     authenticatedUser: null,
     config: {
@@ -45,7 +45,7 @@ const FooterWithLanguageSelector = ({ languageSelected = () => {} }) => {
           onLanguageSelected={languageSelected}
           supportedLanguages={[
             { label: 'English', value: 'en' },
-            { label: 'Español', value: 'es' },
+            { label: 'Português', value: 'pt-pt' },
           ]}
         />
       </AppContext.Provider>
@@ -61,9 +61,9 @@ describe('<Footer />', () => {
         .toJSON();
       expect(tree).toMatchSnapshot();
     });
-    it('renders without a language selector in es', () => {
+    it('renders without a language selector in pt-pt', () => {
       const tree = renderer
-        .create(<FooterWithContext locale="es" />)
+        .create(<FooterWithContext locale="pt-pt" />)
         .toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -84,13 +84,13 @@ describe('<Footer />', () => {
         target: {
           elements: {
             'site-footer-language-select': {
-              value: 'es',
+              value: 'pt-pt',
             },
           },
         },
       });
 
-      expect(mockHandleLanguageSelected).toHaveBeenCalledWith('es');
+      expect(mockHandleLanguageSelected).toHaveBeenCalledWith('pt-pt');
     });
   });
 });

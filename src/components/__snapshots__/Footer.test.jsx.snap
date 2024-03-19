@@ -2,30 +2,217 @@
 
 exports[`<Footer /> renders correctly renders with a language selector 1`] = `
 <footer
-  className="footer d-flex border-top py-3 px-4"
   role="contentinfo"
 >
-  <div
-    className="container-fluid d-flex"
+  <section
+    className="footer-navigation container-fluid d-md-flex justify-content-between py-3 px-4"
   >
-    <a
-      aria-label="edX Home"
-      className="d-block"
-      href="http://localhost:18000"
-    >
-      <img
-        alt="Powered by Open edX"
-        src="https://edx-cdn.org/v3/default/logo-trademark.svg"
-        style={
-          Object {
-            "maxHeight": 45,
-          }
-        }
-      />
-    </a>
     <div
-      className="flex-grow-1"
-    />
+      className="footer-navigation__brand d-flex flex-column justify-content-between"
+    >
+      <a
+        aria-label="edX Home"
+        className="d-block"
+        href="http://localhost:18000"
+      >
+        <img
+          alt="Powered by Open edX"
+          src="https://edx-cdn.org/v3/default/logo-trademark.svg"
+          style={
+            Object {
+              "maxHeight": 45,
+            }
+          }
+        />
+      </a>
+      <div
+        className="footer-social d-flex mt-2"
+      >
+        <a
+          className="footer-social__badge"
+          href="https://www.nau.edu.pt/newsletter"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Subscribe to our newsletter"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-envelope "
+            data-icon="envelope"
+            data-prefix="far"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <a
+          className="footer-social__badge"
+          href="https://www.facebook.com/plataformanau/"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Follow us on Facebook"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-facebook-f "
+            data-icon="facebook-f"
+            data-prefix="fab"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 320 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <a
+          className="footer-social__badge"
+          href="https://www.linkedin.com/company/plataformanau/"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Follow us on LinkedIn"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-linkedin-in "
+            data-icon="linkedin-in"
+            data-prefix="fab"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <nav
+      className="footer-links d-md-flex justify-content-between px-4"
+    >
+      <div
+        className="footer-links-navigation py-3"
+      >
+        <span>
+          NAU
+        </span>
+        <ul>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/about/"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/courses/"
+            >
+              Courses
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/partners/how-to-become-a-partner/"
+            >
+              How to become a partner
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="footer-links-navigation py-3"
+      >
+        <span>
+          Communication
+        </span>
+        <ul>
+          <li>
+            <a
+              href="https://ajuda.nau.edu.pt/"
+            >
+              Help
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/news/"
+            >
+              News
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/media-kit/"
+            >
+              Media Kit
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="footer-links-navigation py-3"
+      >
+        <span>
+          Legal
+        </span>
+        <ul>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/terms-and-conditions/"
+            >
+              Terms and Conditions
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/privacy-policy/"
+            >
+              Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/legal/cookies-policy/"
+            >
+              Cookies Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/legal/politica-de-certificacao/"
+            >
+              Certification Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/legal/codigo-de-honra/"
+            >
+              Code of Honor
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <form
       className="form-inline"
       onSubmit={[Function]}
@@ -51,9 +238,9 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
             English
           </option>
           <option
-            value="es"
+            value="pt-pt"
           >
-            Español
+            Português
           </option>
         </select>
         <button
@@ -65,66 +252,485 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
         </button>
       </div>
     </form>
-  </div>
+  </section>
+  <section
+    className="footer-copyright py-3 px-4"
+  >
+    <div
+      className="footer-copyright__logo"
+    >
+      <span>
+        © 
+        2024
+         - FCT|FCCN
+        <br />
+        All rights reserved
+      </span>
+    </div>
+  </section>
 </footer>
 `;
 
 exports[`<Footer /> renders correctly renders without a language selector 1`] = `
 <footer
-  className="footer d-flex border-top py-3 px-4"
   role="contentinfo"
 >
-  <div
-    className="container-fluid d-flex"
+  <section
+    className="footer-navigation container-fluid d-md-flex justify-content-between py-3 px-4"
   >
-    <a
-      aria-label="edX Home"
-      className="d-block"
-      href="http://localhost:18000"
-    >
-      <img
-        alt="Powered by Open edX"
-        src="https://edx-cdn.org/v3/default/logo-trademark.svg"
-        style={
-          Object {
-            "maxHeight": 45,
-          }
-        }
-      />
-    </a>
     <div
-      className="flex-grow-1"
-    />
-  </div>
+      className="footer-navigation__brand d-flex flex-column justify-content-between"
+    >
+      <a
+        aria-label="edX Home"
+        className="d-block"
+        href="http://localhost:18000"
+      >
+        <img
+          alt="Powered by Open edX"
+          src="https://edx-cdn.org/v3/default/logo-trademark.svg"
+          style={
+            Object {
+              "maxHeight": 45,
+            }
+          }
+        />
+      </a>
+      <div
+        className="footer-social d-flex mt-2"
+      >
+        <a
+          className="footer-social__badge"
+          href="https://www.nau.edu.pt/newsletter"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Subscribe to our newsletter"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-envelope "
+            data-icon="envelope"
+            data-prefix="far"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <a
+          className="footer-social__badge"
+          href="https://www.facebook.com/plataformanau/"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Follow us on Facebook"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-facebook-f "
+            data-icon="facebook-f"
+            data-prefix="fab"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 320 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <a
+          className="footer-social__badge"
+          href="https://www.linkedin.com/company/plataformanau/"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Follow us on LinkedIn"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-linkedin-in "
+            data-icon="linkedin-in"
+            data-prefix="fab"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <nav
+      className="footer-links d-md-flex justify-content-between px-4"
+    >
+      <div
+        className="footer-links-navigation py-3"
+      >
+        <span>
+          NAU
+        </span>
+        <ul>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/about/"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/courses/"
+            >
+              Courses
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/partners/how-to-become-a-partner/"
+            >
+              How to become a partner
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="footer-links-navigation py-3"
+      >
+        <span>
+          Communication
+        </span>
+        <ul>
+          <li>
+            <a
+              href="https://ajuda.nau.edu.pt/"
+            >
+              Help
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/news/"
+            >
+              News
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/media-kit/"
+            >
+              Media Kit
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="footer-links-navigation py-3"
+      >
+        <span>
+          Legal
+        </span>
+        <ul>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/terms-and-conditions/"
+            >
+              Terms and Conditions
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/privacy-policy/"
+            >
+              Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/legal/cookies-policy/"
+            >
+              Cookies Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/legal/politica-de-certificacao/"
+            >
+              Certification Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/en/legal/codigo-de-honra/"
+            >
+              Code of Honor
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+  <section
+    className="footer-copyright py-3 px-4"
+  >
+    <div
+      className="footer-copyright__logo"
+    >
+      <span>
+        © 
+        2024
+         - FCT|FCCN
+        <br />
+        All rights reserved
+      </span>
+    </div>
+  </section>
 </footer>
 `;
 
-exports[`<Footer /> renders correctly renders without a language selector in es 1`] = `
+exports[`<Footer /> renders correctly renders without a language selector in pt-pt 1`] = `
 <footer
-  className="footer d-flex border-top py-3 px-4"
   role="contentinfo"
 >
-  <div
-    className="container-fluid d-flex"
+  <section
+    className="footer-navigation container-fluid d-md-flex justify-content-between py-3 px-4"
   >
-    <a
-      aria-label="edX Home"
-      className="d-block"
-      href="http://localhost:18000"
-    >
-      <img
-        alt="Powered by Open edX"
-        src="https://edx-cdn.org/v3/default/logo-trademark.svg"
-        style={
-          Object {
-            "maxHeight": 45,
-          }
-        }
-      />
-    </a>
     <div
-      className="flex-grow-1"
-    />
-  </div>
+      className="footer-navigation__brand d-flex flex-column justify-content-between"
+    >
+      <a
+        aria-label="edX Home"
+        className="d-block"
+        href="http://localhost:18000"
+      >
+        <img
+          alt="Powered by Open edX"
+          src="https://edx-cdn.org/v3/default/logo-trademark.svg"
+          style={
+            Object {
+              "maxHeight": 45,
+            }
+          }
+        />
+      </a>
+      <div
+        className="footer-social d-flex mt-2"
+      >
+        <a
+          className="footer-social__badge"
+          href="https://www.nau.edu.pt/newsletter"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Subscribe to our newsletter"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-envelope "
+            data-icon="envelope"
+            data-prefix="far"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <a
+          className="footer-social__badge"
+          href="https://www.facebook.com/plataformanau/"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Follow us on Facebook"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-facebook-f "
+            data-icon="facebook-f"
+            data-prefix="fab"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 320 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+        <a
+          className="footer-social__badge"
+          href="https://www.linkedin.com/company/plataformanau/"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Follow us on LinkedIn"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-linkedin-in "
+            data-icon="linkedin-in"
+            data-prefix="fab"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <nav
+      className="footer-links d-md-flex justify-content-between px-4"
+    >
+      <div
+        className="footer-links-navigation py-3"
+      >
+        <span>
+          NAU
+        </span>
+        <ul>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/pt/sobre/"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/pt/cursos/"
+            >
+              Courses
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/pt/parceiros/como-se-tornar-parceiro/"
+            >
+              How to become a partner
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="footer-links-navigation py-3"
+      >
+        <span>
+          Communication
+        </span>
+        <ul>
+          <li>
+            <a
+              href="https://ajuda.nau.edu.pt/"
+            >
+              Help
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/pt/noticias/"
+            >
+              News
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/pt/material-de-divulgacao/"
+            >
+              Media Kit
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="footer-links-navigation py-3"
+      >
+        <span>
+          Legal
+        </span>
+        <ul>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/pt/legal/termos-e-condicoes/"
+            >
+              Terms and Conditions
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/pt/legal/politica-de-privacidade/"
+            >
+              Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/pt/legal/cookies/"
+            >
+              Cookies Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/pt/legal/politica-de-certificacao/"
+            >
+              Certification Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.nau.edu.pt/pt/legal/codigo-de-honra/"
+            >
+              Code of Honor
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+  <section
+    className="footer-copyright py-3 px-4"
+  >
+    <div
+      className="footer-copyright__logo"
+    >
+      <span>
+        © 
+        2024
+         - FCT|FCCN
+        <br />
+        All rights reserved
+      </span>
+    </div>
+  </section>
 </footer>
 `;
