@@ -99,6 +99,65 @@ The footer can be replaced using using `Frontend Plugin Framework <https://githu
 
 Information on how to utilize the ``FooterSlot`` component to do so is available in the `frontend-slot-footer repository <https://github.com/openedx/frontend-slot-footer/>`_.
 
+<AdditionalLogosSection /> component
+====================================
+
+This component is a child of the Footer component and is used to display additional logos in the footer. 
+It uses the ``FOOTER_ADDITIONAL_LOGOS`` environment variable to determine which logos to display.
+If this variable is not set, the component will not render.
+
+Configuration Example::
+
+  FOOTER_LOGOS = `[
+    {"src": "https://nau-prod-richie-nau-media.rgw.nau.fccn.pt/media/filer_public_thumbnails/filer_public/db/4e/db4ed4cc-f3f0-48e1-82e6-e81f2cd042e6/modelos-barras-fundos-v04_4logos-feder_fse_nau.png__7501.0x842.0_subsampling-2.png",
+    "alt": "Feder, FSE, NAU",
+    "url": "https://www.fccn.pt/inovacao/projeto-nau-financiamento-sama/"},
+    {"src": "https://nau-prod-richie-nau-media.rgw.nau.fccn.pt/media/filer_public_thumbnails/filer_public/e2/fd/e2fd1cfb-c520-4e3d-9cf4-273332ab4d66/incode.png__185.0x27.0_subsampling-2.png",
+    "alt": "Incode",
+    "url": "https://www.incode2030.gov.pt/"},
+    {"src": "https://nau-prod-richie-nau-media.rgw.nau.fccn.pt/media/filer_public_thumbnails/filer_public/7d/c6/7dc6c932-e185-4dba-a659-d7e9867e150f/pt_digital_horizontal_60px.png__170.0x60.0_subsampling-2.png",
+    "alt": "Portugal Digital",
+    "url": "https://portugaldigital.gov.pt/"}
+    ]`;
+
+<FooterLinks /> component
+=========================
+
+The FooterLinks component is a child of the Footer component and is used to display NAU links in the footer, similar to what happens in Richie and the Legacy LMS UI.
+Links are provided in a list of objects, each with a title and a URL. The URL can be a string or an object containing the href to the available languages.
+
+The file is available on ``src/data/footerLinks.js`` and it is used to provide the links to the FooterLinks component.
+
+Configuration Example::
+
+  const links = [
+  {
+    title: 'footer.nau.title', //section title
+    menus: [
+      {
+        title: 'footer.nau.about', //menu item title
+        url: {
+          en: 'https://www.nau.edu.pt/en/about/',
+          pt: 'https://www.nau.edu.pt/pt/sobre/'
+        }
+      },
+      {
+        title: 'footer.nau.courses',
+        url: {
+          en: 'https://www.nau.edu.pt/en/courses/',
+          pt: 'https://www.nau.edu.pt/pt/cursos/'
+        }
+      },
+      {
+        title: 'footer.nau.partner',
+        url: {
+          en: 'https://www.nau.edu.pt/en/partners/how-to-become-a-partner/',
+          pt: 'https://www.nau.edu.pt/pt/parceiros/como-se-tornar-parceiro/'
+        }
+      }
+    ]
+  }];
+ 
 Examples
 ========
 
