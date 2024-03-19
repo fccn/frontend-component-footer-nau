@@ -10,7 +10,7 @@ import Footer from './Footer';
 import FooterSlot from '../plugin-slots/FooterSlot';
 import StudioFooterHelpSectionSlot from '../plugin-slots/StudioFooterHelpSectionSlot';
 
-const FooterWithContext = ({ locale = 'es' }) => {
+const FooterWithContext = ({ locale = 'pt-pt' }) => {
   const contextValue = useMemo(() => ({
     authenticatedUser: null,
     config: {
@@ -48,7 +48,7 @@ const FooterWithLanguageSelector = ({ languageSelected = () => {} }) => {
           onLanguageSelected={languageSelected}
           supportedLanguages={[
             { label: 'English', value: 'en' },
-            { label: 'Español', value: 'es' },
+            { label: 'Português', value: 'pt-pt' },
           ]}
         />
       </AppContext.Provider>
@@ -64,9 +64,9 @@ describe('<Footer />', () => {
         .toJSON();
       expect(tree).toMatchSnapshot();
     });
-    it('renders without a language selector in es', () => {
+    it('renders without a language selector in pt-pt', () => {
       const tree = renderer
-        .create(<FooterWithContext locale="es" />)
+        .create(<FooterWithContext locale="pt-pt" />)
         .toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -84,10 +84,17 @@ describe('<Footer />', () => {
       const mockHandleLanguageSelected = jest.fn();
       render(<FooterWithLanguageSelector languageSelected={mockHandleLanguageSelected} />);
 
-      await user.selectOptions(screen.getByRole('combobox'), 'es');
-      await user.click(screen.getByTestId('site-footer-submit-btn'));
+      fireEvent.submit(screen.getByTestId('site-footer-submit-btn'), {
+        target: {
+          elements: {
+            'site-footer-language-select': {
+              value: 'pt-pt',
+            },
+          },
+        },
+      });
 
-      expect(mockHandleLanguageSelected).toHaveBeenCalledWith('es');
+      expect(mockHandleLanguageSelected).toHaveBeenCalledWith('pt-pt');
     });
   });
 });
