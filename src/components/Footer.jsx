@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
-import { ensureConfig } from '@edx/frontend-platform';
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -21,8 +21,6 @@ ensureConfig([
 const EVENT_NAMES = {
   FOOTER_LINK: 'edx.bi.footer.link',
 };
-
-const FOOTER_LOGOS = process.env.FOOTER_ADDITIONAL_LOGOS;
 
 const FooterSocial = ({ intl }) => (
   <div className="footer-social d-flex mt-2">
@@ -43,8 +41,12 @@ FooterSocial.propTypes = {
 };
 
 const AdditionalLogosSection = () => {
+  const FOOTER_LOGOS = getConfig().FOOTER_ADDITIONAL_LOGOS || process.env.FOOTER_ADDITIONAL_LOGOS;
   const parseFooterLogos = () => {
     try {
+      if (Array.isArray(FOOTER_LOGOS)) {
+        return FOOTER_LOGOS;
+      }
       return JSON.parse(FOOTER_LOGOS);
     } catch (e) {
       return null;
