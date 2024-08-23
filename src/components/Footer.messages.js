@@ -116,6 +116,11 @@ const messages = defineMessages({
     defaultMessage: 'Subscribe to our newsletter',
     description: 'The label for the link to the nau newsletter page.',
   },
+  'footer.nau.social.instagram': {
+    id: 'footer.nau.social.instagram',
+    defaultMessage: 'Follow us on Instagram',
+    description: 'The label for the link to the nau instagram page.',
+  },
 });
 
 export default messages;

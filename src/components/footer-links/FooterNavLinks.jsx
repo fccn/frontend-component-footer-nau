@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { intlShape } from '@edx/frontend-platform/i18n';
+import { getConfig } from '@edx/frontend-platform';
 import messages from '../Footer.messages';
+import parseEnvSettings from '../../utils/parseData';
 
 const FooterLinkItem = ({ intl, link }) => {
   const getLocaleCode = (intl.locale.split('-')[0] === 'pt') ? 'pt' : 'en';
@@ -18,12 +20,15 @@ const FooterLinkItem = ({ intl, link }) => {
   );
 };
 
-const FooterLinks = ({ intl, links }) => {
-  if (!links) { return null; }
+const FooterLinks = ({ intl }) => {
+  const FOOTER_NAV_LINKS = getConfig().FOOTER_NAV_LINKS || process.env.FOOTER_NAV_LINKS;
+  const footerLinks = parseEnvSettings(FOOTER_NAV_LINKS);
+
+  if (!footerLinks) { return null; }
 
   return (
     <nav className="footer-links d-md-flex justify-content-between px-4">
-      {links.map((link) => (
+      {footerLinks.map((link) => (
         <div className="footer-links-navigation py-3">
           <span>{intl.formatMessage(messages[link.title])}</span>
           <ul>
@@ -50,20 +55,6 @@ FooterLinkItem.propTypes = {
 
 FooterLinks.propTypes = {
   intl: intlShape.isRequired,
-  links: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    menus: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      url: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.object,
-      ]).isRequired,
-    })).isRequired,
-  })),
-};
-
-FooterLinks.defaultProps = {
-  links: [],
 };
 
 export default FooterLinks;
