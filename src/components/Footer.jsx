@@ -4,14 +4,12 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 import messages from './Footer.messages';
 import LanguageSelector from './LanguageSelector';
-import { links, social } from '../data/footerLinks';
-import FooterLinks from './footer-links/FooterLinks';
+import FooterLinks from './footer-links/FooterNavLinks';
+import FooterSocial from './footer-links/FooterSocialLinks';
+import parseEnvSettings from '../utils/parseData';
 
 ensureConfig([
   'LMS_BASE_URL',
@@ -22,38 +20,10 @@ const EVENT_NAMES = {
   FOOTER_LINK: 'edx.bi.footer.link',
 };
 
-const FooterSocial = ({ intl }) => (
-  <div className="footer-social d-flex mt-2">
-    <a className="footer-social__badge" href={social?.newsletter} target="_blank" rel="noopener noreferrer" title={intl.formatMessage(messages['footer.nau.social.newsletter'])}>
-      <FontAwesomeIcon icon={faEnvelope} />
-    </a>
-    <a className="footer-social__badge" href={social?.facebook} target="_blank" rel="noopener noreferrer" title={intl.formatMessage(messages['footer.nau.social.facebook'])}>
-      <FontAwesomeIcon icon={faFacebookF} />
-    </a>
-    <a className="footer-social__badge" href={social?.linkedin} target="_blank" rel="noopener noreferrer" title={intl.formatMessage(messages['footer.nau.social.linkedin'])}>
-      <FontAwesomeIcon icon={faLinkedinIn} />
-    </a>
-  </div>
-);
-
-FooterSocial.propTypes = {
-  intl: intlShape.isRequired,
-};
-
 const AdditionalLogosSection = () => {
-  const FOOTER_LOGOS = getConfig().FOOTER_ADDITIONAL_LOGOS || process.env.FOOTER_ADDITIONAL_LOGOS;
-  const parseFooterLogos = () => {
-    try {
-      if (Array.isArray(FOOTER_LOGOS)) {
-        return FOOTER_LOGOS;
-      }
-      return JSON.parse(FOOTER_LOGOS);
-    } catch (e) {
-      return null;
-    }
-  };
+  const FOOTER_ADDITIONAL_LOGOS = getConfig().FOOTER_ADDITIONAL_LOGOS || process.env.FOOTER_ADDITIONAL_LOGOS;
 
-  const logos = parseFooterLogos();
+  const logos = parseEnvSettings(FOOTER_ADDITIONAL_LOGOS);
 
   if (!logos) { return null; }
 
@@ -132,7 +102,7 @@ class SiteFooter extends React.Component {
             </a>
             <FooterSocial intl={intl} />
           </div>
-          <FooterLinks links={links} intl={intl} />
+          <FooterLinks intl={intl} />
 
           {showLanguageSelector && (
             <LanguageSelector
