@@ -108,7 +108,7 @@ If this variable is not set, the component will not render.
 
 Configuration Example::
 
-  FOOTER_LOGOS = `[
+  MFE_CONFIG["FOOTER_ADDITIONAL_LOGOS"] = '[
     {"src": "https://nau-prod-richie-nau-media.rgw.nau.fccn.pt/media/filer_public_thumbnails/filer_public/db/4e/db4ed4cc-f3f0-48e1-82e6-e81f2cd042e6/modelos-barras-fundos-v04_4logos-feder_fse_nau.png__7501.0x842.0_subsampling-2.png",
     "alt": "Feder, FSE, NAU",
     "url": "https://www.fccn.pt/inovacao/projeto-nau-financiamento-sama/"},
@@ -118,7 +118,7 @@ Configuration Example::
     {"src": "https://nau-prod-richie-nau-media.rgw.nau.fccn.pt/media/filer_public_thumbnails/filer_public/7d/c6/7dc6c932-e185-4dba-a659-d7e9867e150f/pt_digital_horizontal_60px.png__170.0x60.0_subsampling-2.png",
     "alt": "Portugal Digital",
     "url": "https://portugaldigital.gov.pt/"}
-    ]`;
+    ]'
 
 <FooterLinks /> component
 =========================
@@ -126,37 +126,22 @@ Configuration Example::
 The FooterLinks component is a child of the Footer component and is used to display NAU links in the footer, similar to what happens in Richie and the Legacy LMS UI.
 Links are provided in a list of objects, each with a title and a URL. The URL can be a string or an object containing the href to the available languages.
 
-The file is available on ``src/data/footerLinks.js`` and it is used to provide the links to the FooterLinks component.
+This list of links is set via an environment variable ``FOOTER_NAV_LINKS``.
 
 Configuration Example::
 
-  const links = [
-  {
-    title: 'footer.nau.title', //section title
-    menus: [
-      {
-        title: 'footer.nau.about', //menu item title
-        url: {
-          en: 'https://www.nau.edu.pt/en/about/',
-          pt: 'https://www.nau.edu.pt/pt/sobre/'
-        }
-      },
-      {
-        title: 'footer.nau.courses',
-        url: {
-          en: 'https://www.nau.edu.pt/en/courses/',
-          pt: 'https://www.nau.edu.pt/pt/cursos/'
-        }
-      },
-      {
-        title: 'footer.nau.partner',
-        url: {
-          en: 'https://www.nau.edu.pt/en/partners/how-to-become-a-partner/',
-          pt: 'https://www.nau.edu.pt/pt/parceiros/como-se-tornar-parceiro/'
-        }
-      }
-    ]
-  }];
+
+  MFE_CONFIG["FOOTER_NAV_LINKS"] = '[{"title": "footer.nau.title","menus": [{"title": "footer.nau.about","url": {"en": "https://www.nau.edu.pt/en/about/","pt": "https://www.nau.edu.pt/pt/sobre/"}},{"title": "footer.nau.courses","url": {"en": "https://www.nau.edu.pt/en/courses/","pt": "https://www.nau.edu.pt/pt/cursos/"}},{"title": "footer.nau.partner","url": {"en": "https://www.nau.edu.pt/en/partners/how-to-become-a-partner/","pt": "https://www.nau.edu.pt/pt/parceiros/como-se-tornar-parceiro/"}}]},{"title": "footer.nau.communication","menus": [{"title": "footer.nau.help","url": "https://ajuda.nau.edu.pt/"},{"title": "footer.nau.news","url": {"en": "https://www.nau.edu.pt/en/news/","pt": "https://www.nau.edu.pt/pt/noticias/"}},{"title": "footer.nau.mediakit","url": {"en": "https://www.nau.edu.pt/en/media-kit/","pt": "https://www.nau.edu.pt/pt/material-de-divulgacao/"}}]},{"title": "footer.nau.legal","menus": [{"title": "footer.nau.termsconditions","url": {"en": "https://www.nau.edu.pt/en/terms-and-conditions/","pt": "https://www.nau.edu.pt/pt/legal/termos-e-condicoes/"}},{"title": "footer.nau.privacypolicy","url": {"en": "https://www.nau.edu.pt/en/privacy-policy/","pt": "https://www.nau.edu.pt/pt/legal/politica-de-privacidade/"}},{"title": "footer.nau.cookies","url": {"en": "https://www.nau.edu.pt/en/legal/cookies-policy/","pt": "https://www.nau.edu.pt/pt/legal/cookies/"}},{"title": "footer.nau.certification","url": {"en": "https://www.nau.edu.pt/en/legal/politica-de-certificacao/","pt": "https://www.nau.edu.pt/pt/legal/politica-de-certificacao/"}},{"title": "footer.nau.codeofhonor","url": {"en": "https://www.nau.edu.pt/en/legal/codigo-de-honra/","pt": "https://www.nau.edu.pt/pt/legal/codigo-de-honra/"}}]}]'
+
+<FooterSocial /> component
+==========================
+
+This component render social icons. It is defined to accept ``facebook``, ``linkedin`` and ``instagram`` icons. Also included is the ``newsletter`` icon.
+Footer social links can be loaded via environment variable ``FOOTER_SOCIAL_LINKS``.
+
+Configuration Example::
+
+  MFE_CONFIG["FOOTER_SOCIAL_LINKS"] = '[{"platform": "facebook", "title": "footer.nau.social.facebook", "url": "https://www.facebook.com/plataformanau/"},{"platform": "linkedin", "title": "footer.nau.social.linkedin", "url": "https://www.linkedin.com/company/plataformanau/"},{"platform": "newsletter", "title": "footer.nau.social.newsletter", "url": "https://www.nau.edu.pt/newsletter"}]'
  
 Examples
 ========
