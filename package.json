@@ -1,7 +1,7 @@
 {
-  "name": "@edx/frontend-component-footer",
-  "version": "1.0.0-semantically-released",
-  "description": "Footer component for use when building Open edX frontend applications",
+  "name": "@nauedu/frontend-component-footer",
+  "version": "18.0.0",
+  "description": "NAU footer component for Open edX",
   "main": "dist/index.js",
   "publishConfig": {
     "access": "public"
@@ -25,14 +25,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/openedx/frontend-component-footer.git"
+    "url": "git+https://github.com/fccn/frontend-component-footer-nau.git"
   },
   "author": "edX",
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/openedx/frontend-component-footer/issues"
+    "url": "https://github.com/fccn/frontend-component-footer-nau/issues"
   },
-  "homepage": "https://github.com/openedx/frontend-component-footer#readme",
+  "homepage": "https://github.com/fccn/frontend-component-footer-nau#readme",
   "devDependencies": {
     "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
     "@edx/browserslist-config": "^1.1.1",
