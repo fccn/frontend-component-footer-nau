@@ -2,8 +2,8 @@ name: Release CI
 on:
   push:
     branches:
-    - master
-    - alpha
+    - nau/*.master
+
 jobs:
   release:
     name: Release
@@ -33,8 +33,15 @@ jobs:
       uses: codecov/codecov-action@v3
     - name: Build
       run: npm run build
-    - name: Release
+    - name: Release to npmjs
+      uses: pascalgn/npm-publish-action@1.3.9
+      with:
+        tag_name: "v%s"
+        tag_message: "v%s"
+        commit_pattern: "^chore(release): (\\S+)"
+        workspace: "."
+        publish_command: "npm"
+        publish_args: "--non-interactive"
       env:
         GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.SEMANTIC_RELEASE_NPM_TOKEN }}
-      run: npx semantic-release
+        NPM_AUTH_TOKEN: ${{ secrets.SEMANTIC_RELEASE_NPM_TOKEN }}
