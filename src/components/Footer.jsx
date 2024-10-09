@@ -29,15 +29,15 @@ const AdditionalLogosSection = () => {
 
   return (
     <section className="footer-additional-logos">
-      <div className="d-md-flex justify-content-between px-4">
-        {logos.map((logo) => (
-          <div className="py-3">
+      {logos.map(line => (
+        <div className="footer-additional-logos__line">
+          {Array.isArray(line) && line.map(logo => (
             <a href={logo.url} target="_blank" rel="noopener noreferrer">
-              <img src={logo.src} alt={logo.alt} style={{ maxHeight: '45px', maxWidth: '280px' }} />
+              <img src={logo.src} alt={logo.alt} />
             </a>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ))}
     </section>
   );
 };
