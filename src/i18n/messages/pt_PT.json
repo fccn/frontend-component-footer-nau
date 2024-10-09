@@ -1,24 +1,5 @@
 {
     "footer.languageForm.select.label": "Escolha a língua",
     "footer.languageForm.submit.label": "Aplicar",
-    "footer.copyright.message": "Todos os direitos reservados.",
-    "footer.nau.title": "NAU - Sempre a Aprender",
-    "footer.nau.about": "Sobre",
-    "footer.nau.contact": "Contactos",
-    "footer.nau.help": "Ajuda",
-    "footer.nau.courses": "Cursos",
-    "footer.nau.partner": "Como se tornar parceiro",
-    "footer.nau.communication": "Comunicação",
-    "footer.nau.news": "Notícias",
-    "footer.nau.mediakit": "Media Kit",
-    "footer.nau.legal": "Legal",
-    "footer.nau.termsconditions": "Termos e condições",
-    "footer.nau.privacypolicy": "Política de Privacidade",
-    "footer.nau.cookies": "Política de Cookies",
-    "footer.nau.certification": "Política de Certificação",
-    "footer.nau.codeofhonor": "Código de Honra",
-    "footer.nau.social.facebook": "Siga-nos no Facebook",
-    "footer.nau.social.linkedin": "Siga-nos no LinkedIn",
-    "footer.nau.social.instagram": "Siga-nos no Instagram",
-    "footer.nau.social.newsletter": "Subscreva a nossa lista de e-mail (newsletter)"
+    "footer.copyright.message": "Todos os direitos reservados."
 }
