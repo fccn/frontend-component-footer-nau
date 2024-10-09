@@ -1,10 +1,5 @@
 {
     "footer.languageForm.select.label": "Escolha a língua",
     "footer.languageForm.submit.label": "Aplicar",
-    "footer.copyright.message": "Todos os direitos reservados.",
-    "modalToS.modalDialog.title": "Modal aceitar Termos de Serviço",
-    "modalToS.dataAuthorization.checkbox.label": "Li e compreendi a <a>Política de Privacidade</a>",
-    "modalToS.termsOfService.checkbox.label": "Li, compreendi e aceito os <a>Termos e Condições</a>",
-    "modalToS.honorCode.checkbox.label": "Li e compreendi o <a>Código de Honra</a>",
-    "modalToS.acceptance.button": "Aceito os novos termos de serviço"
-  }
+    "footer.copyright.message": "Todos os direitos reservados."
+}
