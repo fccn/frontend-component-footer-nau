@@ -2,25 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { intlShape } from '@edx/frontend-platform/i18n';
 import { getConfig } from '@edx/frontend-platform';
-import messages from '../Footer.messages';
 import parseEnvSettings from '../../utils/parseData';
 
-const FooterLinkItem = ({ intl, link }) => {
-  const getLocaleCode = (intl.locale.split('-')[0] === 'pt') ? 'pt' : 'en';
-
+const FooterLinkItem = ({ link, locale }) => {
   const renderUrl = (url) => {
-    if (typeof url === 'object') { return url[getLocaleCode]; }
+    if (typeof url === 'object') { return url[locale]; }
     return url;
   };
 
   return (
     <li>
-      <a href={renderUrl(link.url)}>{intl.formatMessage(messages[link.title])}</a>
+      <a href={renderUrl(link.url)}>{link.title[locale]}</a>
     </li>
   );
 };
 
 const FooterLinks = ({ intl }) => {
+  const getLocaleCode = (intl.locale.split('-')[0] === 'pt') ? 'pt' : 'en';
+
   const FOOTER_NAV_LINKS = getConfig().FOOTER_NAV_LINKS || process.env.FOOTER_NAV_LINKS;
   const footerLinks = parseEnvSettings(FOOTER_NAV_LINKS);
 
@@ -28,12 +27,12 @@ const FooterLinks = ({ intl }) => {
 
   return (
     <nav className="footer-links d-md-flex justify-content-between px-4">
-      {footerLinks.map((link) => (
+      {footerLinks.map(link => (
         <div className="footer-links-navigation py-3">
-          <span>{intl.formatMessage(messages[link.title])}</span>
+          <span>{link.title[getLocaleCode]}</span>
           <ul>
-            {link.menus.map((menu) => (
-              <FooterLinkItem intl={intl} link={menu} />
+            {link.menus.map(menu => (
+              <FooterLinkItem locale={getLocaleCode} link={menu} />
             ))}
           </ul>
         </div>
@@ -43,7 +42,7 @@ const FooterLinks = ({ intl }) => {
 };
 
 FooterLinkItem.propTypes = {
-  intl: intlShape.isRequired,
+  locale: PropTypes.string.isRequired,
   link: PropTypes.shape({
     title: PropTypes.string.isRequired,
     url: PropTypes.oneOfType([
