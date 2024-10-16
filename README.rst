@@ -128,26 +128,18 @@ runtime MFE Config API to set the MODAL_UPDATE_TERMS_OF_SERVICE object. Example:
     }
 
 Where:
-* **date_iso_8601** *(required)*: This is a required field representing the date of the terms of service update 
-in ISO 8601 format. 
-It is used to track whether the user has accepted the new terms since the last update.
+
+* **date_iso_8601** *(required)*: This is a required field representing the date of the terms of service update in ISO 8601 format. It is used to track whether the user has accepted the new terms since the last update.
 * **title** *(optional)*:  It is an object that provides the modal title text for different languages.
 * **body** *(optional)*: It is an object that provides the body content of the modal for different languages.
-* **data_authorization** *(optional)*: Boolean that determines whether the Privacy Policy checkbox should be 
-displayed in the modal.
-* **terms_of_service** *(optional)*: Boolean that controls whether the Terms of Service checkbox should be 
-shown in the modal.
-* **honor_code** *(optional)*: Boolean that specifies whether the Honor Code checkbox should be displayed 
-in the modal.
+* **data_authorization** *(optional)*: Boolean that determines whether the Privacy Policy checkbox should be displayed in the modal.
+* **terms_of_service** *(optional)*: Boolean that controls whether the Terms of Service checkbox should be shown in the modal.
+* **honor_code** *(optional)*: Boolean that specifies whether the Honor Code checkbox should be displayed in the modal.
 
 The modal conditions:
 
-* The modal will be displayed if the user has not yet accepted the latest terms and conditions as defined 
-by date_iso_8601.
-* If any of the optional fields (data_authorization, terms_of_service, honor_code) are not specified, the
-corresponding checkboxes will not appear in the modal.
-The modal is multilingual, and the content for both the title and body can be customized for different
-locales using language keys like en (English), pt-pt (Portuguese), etc.
+* The modal will be displayed if the user has not yet accepted the latest terms and conditions as defined by date_iso_8601.
+* If any of the optional fields (data_authorization, terms_of_service, honor_code) are not specified, the corresponding checkboxes will not appear in the modal. The modal is multilingual, and the content for both the title and body can be customized for different locales using language keys like en (English), pt-pt (Portuguese), etc.
 
 Plugin
 ======
