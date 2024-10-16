@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
-import { ensureConfig, getConfig } from '@edx/frontend-platform';
+import {
+  APP_CONFIG_INITIALIZED, ensureConfig, getConfig, subscribe,
+} from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 
+import { hydrateAuthenticatedUser } from '@edx/frontend-platform/auth';
 import messages from './Footer.messages';
 import LanguageSelector from './LanguageSelector';
 import FooterLinks from './footer-links/FooterNavLinks';
 import FooterSocial from './footer-links/FooterSocialLinks';
 import parseEnvSettings from '../utils/parseData';
+import ModalToS from './modal-tos';
 
 ensureConfig([
   'LMS_BASE_URL',
@@ -135,6 +139,9 @@ class SiteFooter extends React.Component {
           </div>
         </section>
         <AdditionalLogosSection />
+        {
+        config.MODAL_UPDATE_TERMS_OF_SERVICE && <ModalToS />
+       }
       </footer>
     );
   }
@@ -157,5 +164,9 @@ SiteFooter.defaultProps = {
   supportedLanguages: [],
 };
 
-export default SiteFooter;
+subscribe(APP_CONFIG_INITIALIZED, async () => {
+  await hydrateAuthenticatedUser();
+});
+
+export default injectIntl(SiteFooter);
 export { EVENT_NAMES };
