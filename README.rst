@@ -43,6 +43,14 @@ This component requires that the following environment variable be set by the co
 * ``LMS_BASE_URL`` - The URL of the LMS of your Open edX instance.
 * ``LOGO_TRADEMARK_URL`` - This is a URL to a logo for use in the footer.  This is a different environment variable than ``LOGO_URL`` (used in frontend-component-header) to accommodate sites that would like to have additional trademark information on a logo in the footer, such as a (tm) or (r) symbol.
 
+Optionally, use the following variables to configure the Terms of Service Modal for the MFEs:
+
+* ``MODAL_UPDATE_TERMS_OF_SERVICE`` - Object that reppresent the text and checkbox configured for the TOS Modal
+* ``PRIVACY_POLICY_URL`` - The URL for the privacy policy.
+* ``TERMS_OF_SERVICE_URL`` - The URL for the terms of service.
+* ``TOS_AND_HONOR_CODE`` - The URL for the honor code.
+
+
 Installation
 ============
 
@@ -92,6 +100,46 @@ This library has the following exports:
 * onLanguageSelected: Provides the footer with an event handler for when the user selects a
   language from its dropdown.
 * supportedLanguages: An array of objects representing available languages.  See example below for object shape.
+
+Terms of Service Modal
+=======================
+
+The Terms of Service Modal allows configuring a modal that prompts users to accept updated terms and conditions,
+including Data Authorization, Terms of Service, and/or an Honor Code.
+
+To configure this modal, use either the MFE build-time configuration (via ``.env``, ``.env.config.js``) or the 
+runtime MFE Config API to set the MODAL_UPDATE_TERMS_OF_SERVICE object. Example:
+
+.. code-block:: python
+
+      MFE_CONFIG["MODAL_UPDATE_TERMS_OF_SERVICE"] = {
+        "date_iso_8601": "2025-06-08",
+        "title": {
+            "en": "English modal title",
+            "pt-pt": "Portuguese modal title"
+        },
+        "body": {
+            "en": "English modal text",
+            "pt-pt": "Portuguese modal text"
+        },
+        "data_authorization": true,
+        "terms_of_service": true,
+        "honor_code": true,
+    }
+
+Where:
+
+* **date_iso_8601** *(required)*: This is a required field representing the date of the terms of service update in ISO 8601 format. It is used to track whether the user has accepted the new terms since the last update.
+* **title** *(optional)*:  It is an object that provides the modal title text for different languages.
+* **body** *(optional)*: It is an object that provides the body content of the modal for different languages.
+* **data_authorization** *(optional)*: Boolean that determines whether the Privacy Policy checkbox should be displayed in the modal.
+* **terms_of_service** *(optional)*: Boolean that controls whether the Terms of Service checkbox should be shown in the modal.
+* **honor_code** *(optional)*: Boolean that specifies whether the Honor Code checkbox should be displayed in the modal.
+
+The modal conditions:
+
+* The modal will be displayed if the user has not yet accepted the latest terms and conditions as defined by date_iso_8601.
+* If any of the optional fields (data_authorization, terms_of_service, honor_code) are not specified, the corresponding checkboxes will not appear in the modal. The modal is multilingual, and the content for both the title and body can be customized for different locales using language keys like en (English), pt-pt (Portuguese), etc.
 
 Plugin
 ======
