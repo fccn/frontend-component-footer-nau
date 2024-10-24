@@ -5,80 +5,77 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
   role="contentinfo"
 >
   <section
-    className="footer-navigation container-fluid d-md-flex justify-content-between py-3 px-4"
+    className="footer-navigation"
   >
     <div
-      className="footer-navigation__brand d-flex flex-column justify-content-between"
-    >
-      <a
-        aria-label="edX Home"
-        className="d-block"
-        href="http://localhost:18000"
-      >
-        <img
-          alt="Powered by Open edX"
-          src="https://edx-cdn.org/v3/default/logo-trademark.svg"
-          style={
-            {
-              "maxHeight": 45,
-            }
-          }
-        />
-      </a>
-    </div>
-    <form
-      className="form-inline"
-      onSubmit={[Function]}
+      className="container d-md-flex justify-content-between py-3 px-4"
     >
       <div
-        className="form-group"
+        className="footer-navigation__brand d-flex flex-column justify-content-between"
       >
-        <label
-          className="d-inline-block m-0"
-          htmlFor="site-footer-language-select"
+        <a
+          aria-label="edX Home"
+          className="d-block"
+          href="http://localhost:18000"
         >
-          Choose Language
-        </label>
-        <select
-          className="form-control-sm mx-2"
-          defaultValue="en"
-          id="site-footer-language-select"
-          name="site-footer-language-select"
+          <img
+            alt="Powered by Open edX"
+            src="https://edx-cdn.org/v3/default/logo-trademark.svg"
+            style={
+              {
+                "maxHeight": 45,
+              }
+            }
+          />
+        </a>
+        <div
+          className="footer-copyright"
         >
-          <option
-            value="en"
-          >
-            English
-          </option>
-          <option
-            value="pt-pt"
-          >
-            Português
-          </option>
-        </select>
-        <button
-          className="btn btn-outline-primary btn-sm"
-          data-testid="site-footer-submit-btn"
-          type="submit"
-        >
-          Apply
-        </button>
+          © 
+          2024
+           - FCT|FCCN 
+          All rights reserved
+        </div>
       </div>
-    </form>
-  </section>
-  <section
-    className="footer-copyright py-3 px-4"
-  >
-    <div
-      className="footer-copyright__logo"
-    >
-      <span>
-        © 
-        2024
-         - FCT|FCCN
-        <br />
-        All rights reserved
-      </span>
+      <form
+        className="form-inline"
+        onSubmit={[Function]}
+      >
+        <div
+          className="form-group"
+        >
+          <label
+            className="d-inline-block m-0"
+            htmlFor="site-footer-language-select"
+          >
+            Choose Language
+          </label>
+          <select
+            className="form-control-sm mx-2"
+            defaultValue="en"
+            id="site-footer-language-select"
+            name="site-footer-language-select"
+          >
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="pt-pt"
+            >
+              Português
+            </option>
+          </select>
+          <button
+            className="btn btn-outline-primary btn-sm"
+            data-testid="site-footer-submit-btn"
+            type="submit"
+          >
+            Apply
+          </button>
+        </div>
+      </form>
     </div>
   </section>
 </footer>
@@ -89,41 +86,38 @@ exports[`<Footer /> renders correctly renders without a language selector 1`] = 
   role="contentinfo"
 >
   <section
-    className="footer-navigation container-fluid d-md-flex justify-content-between py-3 px-4"
+    className="footer-navigation"
   >
     <div
-      className="footer-navigation__brand d-flex flex-column justify-content-between"
+      className="container d-md-flex justify-content-between py-3 px-4"
     >
-      <a
-        aria-label="edX Home"
-        className="d-block"
-        href="http://localhost:18000"
+      <div
+        className="footer-navigation__brand d-flex flex-column justify-content-between"
       >
-        <img
-          alt="Powered by Open edX"
-          src="https://edx-cdn.org/v3/default/logo-trademark.svg"
-          style={
-            {
-              "maxHeight": 45,
+        <a
+          aria-label="edX Home"
+          className="d-block"
+          href="http://localhost:18000"
+        >
+          <img
+            alt="Powered by Open edX"
+            src="https://edx-cdn.org/v3/default/logo-trademark.svg"
+            style={
+              {
+                "maxHeight": 45,
+              }
             }
-          }
-        />
-      </a>
-    </div>
-  </section>
-  <section
-    className="footer-copyright py-3 px-4"
-  >
-    <div
-      className="footer-copyright__logo"
-    >
-      <span>
-        © 
-        2024
-         - FCT|FCCN
-        <br />
-        All rights reserved
-      </span>
+          />
+        </a>
+        <div
+          className="footer-copyright"
+        >
+          © 
+          2024
+           - FCT|FCCN 
+          All rights reserved
+        </div>
+      </div>
     </div>
   </section>
 </footer>
@@ -134,41 +128,38 @@ exports[`<Footer /> renders correctly renders without a language selector in pt-
   role="contentinfo"
 >
   <section
-    className="footer-navigation container-fluid d-md-flex justify-content-between py-3 px-4"
+    className="footer-navigation"
   >
     <div
-      className="footer-navigation__brand d-flex flex-column justify-content-between"
+      className="container d-md-flex justify-content-between py-3 px-4"
     >
-      <a
-        aria-label="edX Home"
-        className="d-block"
-        href="http://localhost:18000"
+      <div
+        className="footer-navigation__brand d-flex flex-column justify-content-between"
       >
-        <img
-          alt="Powered by Open edX"
-          src="https://edx-cdn.org/v3/default/logo-trademark.svg"
-          style={
-            {
-              "maxHeight": 45,
+        <a
+          aria-label="edX Home"
+          className="d-block"
+          href="http://localhost:18000"
+        >
+          <img
+            alt="Powered by Open edX"
+            src="https://edx-cdn.org/v3/default/logo-trademark.svg"
+            style={
+              {
+                "maxHeight": 45,
+              }
             }
-          }
-        />
-      </a>
-    </div>
-  </section>
-  <section
-    className="footer-copyright py-3 px-4"
-  >
-    <div
-      className="footer-copyright__logo"
-    >
-      <span>
-        © 
-        2024
-         - FCT|FCCN
-        <br />
-        All rights reserved
-      </span>
+          />
+        </a>
+        <div
+          className="footer-copyright"
+        >
+          © 
+          2024
+           - FCT|FCCN 
+          All rights reserved
+        </div>
+      </div>
     </div>
   </section>
 </footer>
