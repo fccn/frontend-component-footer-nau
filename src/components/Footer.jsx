@@ -43,14 +43,9 @@ const AdditionalLogosSection = () => {
 };
 
 const FooterCopyrightSection = ({ intl }) => (
-  <section className="footer-copyright py-3 px-4">
-    <div className="footer-copyright__logo">
-      <span>&copy; {new Date().getFullYear()} - FCT|FCCN
-        <br />
-        {intl.formatMessage(messages['footer.copyright.message'])}
-      </span>
-    </div>
-  </section>
+  <div className="footer-copyright">
+    &copy; {new Date().getFullYear()} - FCT|FCCN {intl.formatMessage(messages['footer.copyright.message'])}
+  </div>
 );
 
 FooterCopyrightSection.propTypes = {
@@ -87,32 +82,34 @@ class SiteFooter extends React.Component {
       <footer
         role="contentinfo"
       >
-        <section className="footer-navigation container-fluid d-md-flex justify-content-between py-3 px-4">
-          <div className="footer-navigation__brand d-flex flex-column justify-content-between">
-            <a
-              className="d-block"
-              href={config.LMS_BASE_URL}
-              aria-label={intl.formatMessage(messages['footer.logo.ariaLabel'])}
-            >
-              <img
-                style={{ maxHeight: 45 }}
-                src={logo || config.LOGO_TRADEMARK_URL}
-                alt={intl.formatMessage(messages['footer.logo.altText'])}
-              />
-            </a>
-            <FooterSocial intl={intl} />
-          </div>
-          <FooterLinks intl={intl} />
+        <section className="footer-navigation">
+          <div className="container d-md-flex justify-content-between py-3 px-4">
+            <div className="footer-navigation__brand d-flex flex-column justify-content-between">
+              <a
+                className="d-block"
+                href={config.LMS_BASE_URL}
+                aria-label={intl.formatMessage(messages['footer.logo.ariaLabel'])}
+              >
+                <img
+                  style={{ maxHeight: 45 }}
+                  src={logo || config.LOGO_TRADEMARK_URL}
+                  alt={intl.formatMessage(messages['footer.logo.altText'])}
+                />
+              </a>
+              <FooterCopyrightSection intl={intl} />
+              <FooterSocial intl={intl} />
+            </div>
+            <FooterLinks intl={intl} />
 
-          {showLanguageSelector && (
-            <LanguageSelector
-              options={supportedLanguages}
-              onSubmit={onLanguageSelected}
-            />
-          )}
+            {showLanguageSelector && (
+              <LanguageSelector
+                options={supportedLanguages}
+                onSubmit={onLanguageSelected}
+              />
+            )}
+          </div>
         </section>
         <AdditionalLogosSection />
-        <FooterCopyrightSection intl={intl} />
       </footer>
     );
   }
