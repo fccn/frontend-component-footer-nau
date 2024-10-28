@@ -121,6 +121,11 @@ const messages = defineMessages({
     defaultMessage: 'Follow us on Instagram',
     description: 'The label for the link to the nau instagram page.',
   },
+  'footer.poweredBy.altText': {
+    id: 'footer.poweredBy.altText',
+    defaultMessage: 'Powered by Open edX',
+    description: 'The alt text for the open edx logo image.',
+  },
 });
 
 export default messages;

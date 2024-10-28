@@ -8,10 +8,10 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
     className="footer-navigation"
   >
     <div
-      className="container d-md-flex justify-content-between py-3 px-4"
+      className="container d-md-flex justify-content-between py-3"
     >
       <div
-        className="footer-navigation__brand d-flex flex-column justify-content-between"
+        className="footer-navigation__brand d-flex flex-column justify-content-between px-4"
       >
         <a
           aria-label="edX Home"
@@ -89,10 +89,10 @@ exports[`<Footer /> renders correctly renders without a language selector 1`] = 
     className="footer-navigation"
   >
     <div
-      className="container d-md-flex justify-content-between py-3 px-4"
+      className="container d-md-flex justify-content-between py-3"
     >
       <div
-        className="footer-navigation__brand d-flex flex-column justify-content-between"
+        className="footer-navigation__brand d-flex flex-column justify-content-between px-4"
       >
         <a
           aria-label="edX Home"
@@ -131,10 +131,10 @@ exports[`<Footer /> renders correctly renders without a language selector in pt-
     className="footer-navigation"
   >
     <div
-      className="container d-md-flex justify-content-between py-3 px-4"
+      className="container d-md-flex justify-content-between py-3"
     >
       <div
-        className="footer-navigation__brand d-flex flex-column justify-content-between"
+        className="footer-navigation__brand d-flex flex-column justify-content-between px-4"
       >
         <a
           aria-label="edX Home"
