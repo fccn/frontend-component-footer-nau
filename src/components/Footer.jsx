@@ -14,6 +14,7 @@ import parseEnvSettings from '../utils/parseData';
 ensureConfig([
   'LMS_BASE_URL',
   'LOGO_TRADEMARK_URL',
+  'LOGO_POWERED_BY',
 ], 'Footer component');
 
 const EVENT_NAMES = {
@@ -52,6 +53,28 @@ FooterCopyrightSection.propTypes = {
   intl: intlShape.isRequired,
 };
 
+const FooterPoweredBy = ({ intl }) => {
+  const POWERED_BY = getConfig().LOGO_POWERED_BY || process.env.LOGO_POWERED_BY;
+
+  const poweredBy = parseEnvSettings(POWERED_BY);
+
+  if (!poweredBy) { return null; }
+
+  return (
+    <a className="footer-powered-by" href={poweredBy.url} target="_blank" rel="noopener noreferrer">
+      <img
+        src={poweredBy.src}
+        alt={intl.formatMessage(messages['footer.poweredBy.altText'])}
+        style={{ width: '6rem' }}
+      />
+    </a>
+  );
+};
+
+FooterPoweredBy.propTypes = {
+  intl: intlShape.isRequired,
+};
+
 class SiteFooter extends React.Component {
   constructor(props) {
     super(props);
@@ -83,8 +106,8 @@ class SiteFooter extends React.Component {
         role="contentinfo"
       >
         <section className="footer-navigation">
-          <div className="container d-md-flex justify-content-between py-3 px-4">
-            <div className="footer-navigation__brand d-flex flex-column justify-content-between">
+          <div className="container d-md-flex justify-content-between py-3">
+            <div className="footer-navigation__brand d-flex flex-column justify-content-between px-4">
               <a
                 className="d-block"
                 href={config.LMS_BASE_URL}
@@ -98,6 +121,7 @@ class SiteFooter extends React.Component {
               </a>
               <FooterCopyrightSection intl={intl} />
               <FooterSocial intl={intl} />
+              <FooterPoweredBy intl={intl} />
             </div>
             <FooterLinks intl={intl} />
 
