@@ -6,6 +6,7 @@ import { FormattedMessage, getLocale, injectIntl } from '@edx/frontend-platform/
 import {
   Button, Form, Hyperlink, ModalDialog, useToggle, useCheckboxSetValues,
   ActionRow,
+  useWindowSize,
 } from '@openedx/paragon';
 
 import { getUserTOSPreference, updateUserTOSPreference } from './data/api';
@@ -23,7 +24,8 @@ const createTOSLink = (chunks, url) => (
 const ModalToS = () => {
   const [tosPreference, setTosPreference] = useState(undefined);
   const [isOpen, open, close] = useToggle(false);
-
+  const { width } = useWindowSize();
+  const checkboxLabelStyle = (width < 768) ? 'd-inline-block' : null;
   const {
     MODAL_UPDATE_TERMS_OF_SERVICE,
     PRIVACY_POLICY_URL,
@@ -108,7 +110,7 @@ const ModalToS = () => {
           >
             {dataAuthorization
               && (
-                <Form.Checkbox value="dataAuthorization">
+                <Form.Checkbox value="dataAuthorization" labelClassName={checkboxLabelStyle}>
                   <FormattedMessage
                     id="modalToS.dataAuthorization.checkbox.label"
                     description="The label for the data authorization checkbox inside the TOS modal."
@@ -121,7 +123,7 @@ const ModalToS = () => {
               )}
             {termsOfService
               && (
-                <Form.Checkbox value="termsOfService">
+                <Form.Checkbox value="termsOfService" labelClassName={checkboxLabelStyle}>
                   <FormattedMessage
                     id="modalToS.termsOfService.checkbox.label"
                     description="The label for the terms of service checkbox inside the TOS modal."
@@ -135,7 +137,7 @@ const ModalToS = () => {
               )}
             {honorCode
               && (
-                <Form.Checkbox value="honorCode">
+                <Form.Checkbox value="honorCode" labelClassName={checkboxLabelStyle}>
                   <FormattedMessage
                     id="modalToS.honorCode.checkbox.label"
                     description="The label for the honor code checkbox inside the TOS modal."
