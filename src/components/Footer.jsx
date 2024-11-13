@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import {
-  ensureConfig, getConfig, mergeConfig, initialize,
+  APP_PUBSUB_INITIALIZED, APP_CONFIG_INITIALIZED, ensureConfig, getConfig, mergeConfig, subscribe,
 } from '@edx/frontend-platform';
+import { loadExternalScripts } from '@edx/frontend-platform/initialize';
 import { AppContext } from '@edx/frontend-platform/react';
 
+import { hydrateAuthenticatedUser } from '@edx/frontend-platform/auth';
 import messages from './Footer.messages';
 import LanguageSelector from './LanguageSelector';
 import FooterLinks from './footer-links/FooterNavLinks';
@@ -21,18 +23,18 @@ ensureConfig([
   'LOGO_POWERED_BY',
 ], 'Footer component');
 
-initialize({
-  hydrateAuthenticatedUser: true,
-  externalScripts: [GoogleTagManagerLoader],
-  handlers: {
-    config: () => {
-      mergeConfig({
-        GOOGLE_TAG_MANAGER_ID: process.env.GOOGLE_TAG_MANAGER_ID || '',
-        GOOGLE_TAG_MANAGER_ENVIRONMENT: process.env.GOOGLE_TAG_MANAGER_ENVIRONMENT || '',
-      }, 'NauFooter');
-    },
-  },
-  messages: [messages],
+subscribe(APP_PUBSUB_INITIALIZED, () => {
+  mergeConfig({
+    GOOGLE_TAG_MANAGER_ID: process.env.GOOGLE_TAG_MANAGER_ID || '',
+    GOOGLE_TAG_MANAGER_ENVIRONMENT: process.env.GOOGLE_TAG_MANAGER_ENVIRONMENT || '',
+  }, 'NauFooter');
+});
+
+subscribe(APP_CONFIG_INITIALIZED, async () => {
+  await hydrateAuthenticatedUser();
+  loadExternalScripts([GoogleTagManagerLoader], {
+    config: getConfig(),
+  });
 });
 
 const EVENT_NAMES = {
@@ -177,7 +179,6 @@ SiteFooter.defaultProps = {
   onLanguageSelected: undefined,
   supportedLanguages: [],
 };
-
 
 export default injectIntl(SiteFooter);
 export { EVENT_NAMES };
