@@ -117,7 +117,7 @@ describe('ModalTOS Component', () => {
     expect(button).toBeDisabled();
 
     const privacyCheckbox = screen.getByLabelText(/Privacy Policy/i);
-    const termsCheckbox = screen.getByLabelText(/Terms of Service/i, { selector: 'input' });
+    const termsCheckbox = screen.getByLabelText(/Terms and Conditions/i, { selector: 'input' });
 
     fireEvent.click(privacyCheckbox); // Click first checkbox
     expect(button).toBeDisabled(); // Button should still be disabled
@@ -134,7 +134,7 @@ describe('ModalTOS Component', () => {
     await waitFor(() => screen.getByText(/Attention/i));
 
     const privacyCheckbox = screen.getByLabelText(/Privacy Policy/i);
-    const termsCheckbox = screen.getByLabelText(/Terms of Service/i, { selector: 'input' });
+    const termsCheckbox = screen.getByLabelText(/Terms and Conditions/i, { selector: 'input' });
 
     // Check all checkboxes
     fireEvent.click(privacyCheckbox);
