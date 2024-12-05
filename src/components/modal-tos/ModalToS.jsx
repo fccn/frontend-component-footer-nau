@@ -29,7 +29,6 @@ const ModalToS = () => {
   const {
     MODAL_UPDATE_TERMS_OF_SERVICE,
     PRIVACY_POLICY_URL,
-    SITE_NAME,
     TERMS_OF_SERVICE_URL,
     TOS_AND_HONOR_CODE,
   } = getConfig();
@@ -92,6 +91,7 @@ const ModalToS = () => {
       isOpen={isOpen}
       onClose={close}
       hasCloseButton={false}
+      size="lg"
     >
       {title[lang] && (
       <ModalDialog.Header>
@@ -127,10 +127,9 @@ const ModalToS = () => {
                   <FormattedMessage
                     id="modalToS.termsOfService.checkbox.label"
                     description="The label for the terms of service checkbox inside the TOS modal."
-                    defaultMessage="I agree to the {platformName}&nbsp;<a>Terms of Service</a>"
+                    defaultMessage="I have read, understood and accept the&nbsp;<a>Terms and Conditions</a>"
                     values={{
                       a: chunks => createTOSLink(chunks, TERMS_OF_SERVICE_URL),
-                      platformName: SITE_NAME,
                     }}
                   />
                 </Form.Checkbox>
@@ -141,10 +140,9 @@ const ModalToS = () => {
                   <FormattedMessage
                     id="modalToS.honorCode.checkbox.label"
                     description="The label for the honor code checkbox inside the TOS modal."
-                    defaultMessage="I agree to the {platformName}&nbsp;<a>Honor Code</a>"
+                    defaultMessage="I have read and understood the&nbsp;<a>Honor Code</a>"
                     values={{
                       a: chunks => createTOSLink(chunks, TOS_AND_HONOR_CODE),
-                      platformName: SITE_NAME,
                     }}
                   />
                 </Form.Checkbox>
