@@ -1,7 +1,11 @@
-$gray-footer: #eee !default;
-$logo-color: #4e4e4e !default;
+$footer-background-color: #232323 !default;
+$footer-text: #d2d2d2 !default;
+$logo-color: $footer-text;
+$footer-social-icons: $footer-text;
+$footer-links-navigation-color: $footer-text;
 
 .footer-navigation {
+  background-color: $footer-background-color;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -15,6 +19,7 @@ $logo-color: #4e4e4e !default;
 }
 
 .footer-links-navigation {
+  color: $footer-links-navigation-color;
   flex-basis: 260px;
   min-width: 200px;
   font-size: 0.9rem;
@@ -34,7 +39,7 @@ $logo-color: #4e4e4e !default;
     }
 
     a {
-      color: black;
+      color: $footer-links-navigation-color;
     }
   }
 }
@@ -44,6 +49,10 @@ $logo-color: #4e4e4e !default;
 
   &__badge {
     margin-right: 1.5rem;
+  }
+
+  a {
+    color: $footer-social-icons;
   }
 }
 
