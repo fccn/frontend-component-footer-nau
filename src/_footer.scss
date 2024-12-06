@@ -2,12 +2,13 @@ $gray-footer: #eee !default;
 $logo-color: #4e4e4e !default;
 
 .footer-navigation {
-  background-color: $gray-footer;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .footer-copyright {
   color: $logo-color;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   display: block;
   line-height: 1.1;
   padding: .8rem 0;
@@ -26,6 +27,11 @@ $logo-color: #4e4e4e !default;
     list-style: none;
     padding: 0;
     margin: 0;
+
+    li {
+      margin: 0.1rem 0.1rem 0.1rem 0;
+      padding: 0.1rem 0.1rem 0.1rem 0;
+    }
 
     a {
       color: black;
