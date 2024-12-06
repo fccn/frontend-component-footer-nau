@@ -127,7 +127,7 @@ class SiteFooter extends React.Component {
         role="contentinfo"
       >
         <section className="footer-navigation">
-          <div className="container d-md-flex justify-content-between py-3">
+          <div className="container-xl d-xl-flex justify-content-between py-3">
             <div className="footer-navigation__brand d-flex flex-column justify-content-between px-4">
               <a
                 className="d-block"
