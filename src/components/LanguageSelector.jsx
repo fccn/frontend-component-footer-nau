@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { publish } from '@edx/frontend-platform';
 import {
   getLocale, injectIntl, intlShape, FormattedMessage, LOCALE_CHANGED, handleRtl,
 } from '@edx/frontend-platform/i18n';
+import { Dropdown } from '@openedx/paragon';
 import { logError } from '@edx/frontend-platform/logging';
 
 import { patchPreferences, postSetLang } from './data/api';
@@ -22,49 +25,58 @@ const onLanguageSelected = async (username, selectedLanguageCode) => {
 };
 
 const LanguageSelector = ({
-  intl, options, authenticatedUser, ...props
+  intl, options, authenticatedUser, compact, ...props
 }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+  const languageLabel = (languageCode) => {
+    const option = options.find( ({ value, label }) => value === languageCode )
+    return option ? option.label : null
+  }
+
+  const handleChange = (languageCode, event) => {
     const previousSiteLanguage = getLocale();
-    const languageCode = e.target.elements['site-footer-language-select'].value;
+    console.debug(previousSiteLanguage, languageCode, authenticatedUser);
+
     if (previousSiteLanguage !== languageCode) {
       onLanguageSelected(authenticatedUser?.username, languageCode);
     }
+
+    event.target.parentElement.parentElement.querySelector(".languageLabel").innerHTML = languageLabel(languageCode);
   };
 
+  const currentLangLabel = languageLabel(intl.locale)
+  const showLabel = !Boolean(compact || false);
+
   return (
-    <form
-      className="form-inline"
-      onSubmit={handleSubmit}
-      {...props}
-    >
-      <div className="form-group">
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label htmlFor="site-footer-language-select" className="d-inline-block m-0">
-          <FormattedMessage
-            id="footer.languageForm.select.label"
-            defaultMessage="Choose Language"
-            description="The label for the laguage select part of the language selection form."
-          />
-        </label>
-        <select
-          id="site-footer-language-select"
-          className="form-control-sm mx-2"
-          name="site-footer-language-select"
-          defaultValue={intl.locale}
-        >
-          {options.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-        </select>
-        <button data-testid="site-footer-submit-btn" className="btn btn-outline-primary btn-sm" type="submit">
-          <FormattedMessage
-            id="footer.languageForm.submit.label"
-            defaultMessage="Apply"
-            description="The label for button to submit the language selection form."
-          />
-        </button>
-      </div>
-    </form>
+    <>
+      <Dropdown className="language-selector">
+        <Dropdown.Toggle variant="outline-primary">
+          <FontAwesomeIcon icon={faGlobe} />
+          {showLabel && (
+            currentLangLabel ? (
+              <span class="pl-1 languageLabel">
+                {currentLangLabel}
+              </span>
+            ) : (
+              <span class="pl-1">
+                <FormattedMessage
+                  id="footer.languageForm.select.label"
+                  defaultMessage="Choose Language"
+                  description="The label for the laguage select part of the language selection form."
+                />
+              </span>
+            )
+          )}
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+        {options.map(({ value, label }) => (
+          <Dropdown.Item key={value} eventKey={value} onSelect={handleChange}>
+            {label}
+          </Dropdown.Item>
+        ))}
+        </Dropdown.Menu>
+      </Dropdown>
+    </>
   );
 };
 
@@ -73,6 +85,7 @@ LanguageSelector.propTypes = {
     username: PropTypes.string,
   }).isRequired,
   intl: intlShape.isRequired,
+  compact: PropTypes.bool,
   options: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.string,
     label: PropTypes.string,

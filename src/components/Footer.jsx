@@ -137,17 +137,19 @@ class SiteFooter extends React.Component {
                 />
               </a>
               <FooterCopyrightSection intl={intl} />
+              {config.ENABLE_FOOTER_LANG_SELECTOR && (
+                <div class="mb-2">
+                  <LanguageSelector
+                    options={parseEnvSettings(config.SITE_SUPPORTED_LANGUAGES)}
+                    authenticatedUser={authenticatedUser}
+                  />
+                </div>
+              )}
               <FooterSocial intl={intl} />
               <FooterPoweredBy intl={intl} />
             </div>
             <FooterLinks intl={intl} />
 
-            {config.ENABLE_FOOTER_LANG_SELECTOR && (
-              <LanguageSelector
-                options={config.SITE_SUPPORTED_LENGUAGES}
-                authenticatedUser={authenticatedUser}
-              />
-            )}
           </div>
         </section>
         <AdditionalLogosSection />

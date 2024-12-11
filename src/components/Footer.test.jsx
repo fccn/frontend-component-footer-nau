@@ -44,7 +44,7 @@ const FooterWithLanguageSelector = () => {
       LMS_BASE_URL: process.env.LMS_BASE_URL,
       SITE_NAME: process.env.SITE_NAME,
       ENABLE_FOOTER_LANG_SELECTOR: true,
-      SITE_SUPPORTED_LENGUAGES: [
+      SITE_SUPPORTED_LANGUAGES: [
         { label: 'English', value: 'en' },
         { label: 'Português', value: 'pt-pt' },
       ],
