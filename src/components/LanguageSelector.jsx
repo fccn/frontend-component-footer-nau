@@ -1,14 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape, FormattedMessage } from '@edx/frontend-platform/i18n';
+import { publish } from '@edx/frontend-platform';
+import {
+  getLocale, injectIntl, intlShape, FormattedMessage, LOCALE_CHANGED, handleRtl,
+} from '@edx/frontend-platform/i18n';
+import { logError } from '@edx/frontend-platform/logging';
+
+import { patchPreferences, postSetLang } from './data/api';
+
+const onLanguageSelected = async (username, selectedLanguageCode) => {
+  try {
+    if (username) {
+      await patchPreferences(username, { prefLang: selectedLanguageCode });
+      await postSetLang(selectedLanguageCode);
+    }
+    publish(LOCALE_CHANGED, getLocale());
+    handleRtl();
+  } catch (error) {
+    logError(error);
+  }
+};
 
 const LanguageSelector = ({
-  intl, options, onSubmit, ...props
+  intl, options, authenticatedUser, ...props
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
+    const previousSiteLanguage = getLocale();
     const languageCode = e.target.elements['site-footer-language-select'].value;
-    onSubmit(languageCode);
+    if (previousSiteLanguage !== languageCode) {
+      onLanguageSelected(authenticatedUser?.username, languageCode);
+    }
   };
 
   return (
@@ -47,8 +69,10 @@ const LanguageSelector = ({
 };
 
 LanguageSelector.propTypes = {
+  authenticatedUser: PropTypes.shape({
+    username: PropTypes.string,
+  }).isRequired,
   intl: intlShape.isRequired,
-  onSubmit: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.string,
     label: PropTypes.string,

@@ -49,7 +49,8 @@ Optionally, use the following variables to configure the Terms of Service Modal 
 * ``PRIVACY_POLICY_URL`` - The URL for the privacy policy.
 * ``TERMS_OF_SERVICE_URL`` - The URL for the terms of service.
 * ``TOS_AND_HONOR_CODE`` - The URL for the honor code.
-
+* ``ENABLE_FOOTER_LANG_SELECTOR`` - A boolean to enable the lnaguage selector in the footer component.
+* ``SITE_SUPPORTED_LENGUAGES`` - A list with all the languages to display in the selector.
 
 Installation
 ============
@@ -94,12 +95,6 @@ This library has the following exports:
 * ``messages``: Internationalization messages suitable for use with `@edx/frontend-platform/i18n <https://edx.github.io/frontend-platform/module-Internationalization.html>`_
 * ``dist/footer.scss``: A SASS file which contains style information for the component.  It should be imported into the micro-frontend's own SCSS file.
 
-<Footer /> component props
-==========================
-
-* onLanguageSelected: Provides the footer with an event handler for when the user selects a
-  language from its dropdown.
-* supportedLanguages: An array of objects representing available languages.  See example below for object shape.
 
 Terms of Service Modal
 =======================
@@ -156,13 +151,7 @@ Component Usage Example::
 
   ...
 
-  <Footer
-    onLanguageSelected={(languageCode) => {/* set language */}}
-    supportedLanguages={[
-      { label: 'English', value: 'en'},
-      { label: 'Español', value: 'es' },
-    ]}
-  />
+  <Footer />
 
 * `An example of minimal component and messages usage. <https://github.com/openedx/frontend-template-application/blob/3355bb3a96232390e9056f35b06ffa8f105ed7ca/src/index.jsx#L23>`_
 * `An example of SCSS file usage. <https://github.com/openedx/frontend-template-application/blob/3cd5485bf387b8c479baf6b02bf59e3061dc3465/src/index.scss#L9>`_
