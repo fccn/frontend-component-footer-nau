@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useMemo } from 'react';
 import renderer from 'react-test-renderer';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, fireEvent, screen } from '@testing-library/react';
+import { initializeMockApp } from '@edx/frontend-platform';
 import { IntlProvider } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
 
@@ -10,12 +10,20 @@ import Footer from './Footer';
 import FooterSlot from '../plugin-slots/FooterSlot';
 import StudioFooterHelpSectionSlot from '../plugin-slots/StudioFooterHelpSectionSlot';
 
+import { patchPreferences, postSetLang } from './data/api';
+
+jest.mock('./data/api', () => ({
+  patchPreferences: jest.fn(),
+  postSetLang: jest.fn(),
+}));
+
 const FooterWithContext = ({ locale = 'pt-pt' }) => {
   const contextValue = useMemo(() => ({
     authenticatedUser: null,
     config: {
       LOGO_TRADEMARK_URL: process.env.LOGO_TRADEMARK_URL,
       LMS_BASE_URL: process.env.LMS_BASE_URL,
+      SITE_NAME: process.env.SITE_NAME,
     },
   }), []);
 
@@ -30,12 +38,18 @@ const FooterWithContext = ({ locale = 'pt-pt' }) => {
   );
 };
 
-const FooterWithLanguageSelector = ({ languageSelected = () => {} }) => {
+const FooterWithLanguageSelector = () => {
   const contextValue = useMemo(() => ({
-    authenticatedUser: null,
+    authenticatedUser: { username: 'user123' },
     config: {
       LOGO_TRADEMARK_URL: process.env.LOGO_TRADEMARK_URL,
       LMS_BASE_URL: process.env.LMS_BASE_URL,
+      SITE_NAME: process.env.SITE_NAME,
+      ENABLE_FOOTER_LANG_SELECTOR: true,
+      SITE_SUPPORTED_LENGUAGES: [
+        { label: 'English', value: 'en' },
+        { label: 'Português', value: 'pt-pt' },
+      ],
     },
   }), []);
 
@@ -44,13 +58,7 @@ const FooterWithLanguageSelector = ({ languageSelected = () => {} }) => {
       <AppContext.Provider
         value={contextValue}
       >
-        <Footer
-          onLanguageSelected={languageSelected}
-          supportedLanguages={[
-            { label: 'English', value: 'en' },
-            { label: 'Português', value: 'pt-pt' },
-          ]}
-        />
+        <Footer />
       </AppContext.Provider>
     </IntlProvider>
   );
@@ -79,12 +87,11 @@ describe('<Footer />', () => {
   });
 
   describe('handles language switching', () => {
-    it('calls onLanguageSelected prop when a language is changed', async () => {
-      const user = userEvent.setup();
-      const mockHandleLanguageSelected = jest.fn();
-      render(<FooterWithLanguageSelector languageSelected={mockHandleLanguageSelected} />);
+    it('calls patchPreferences and postSetLang when a language is changed', async () => {
+      initializeMockApp();
+      render(<FooterWithLanguageSelector />);
 
-      fireEvent.submit(screen.getByTestId('site-footer-submit-btn'), {
+      await fireEvent.submit(screen.getByTestId('site-footer-submit-btn'), {
         target: {
           elements: {
             'site-footer-language-select': {
@@ -93,8 +100,8 @@ describe('<Footer />', () => {
           },
         },
       });
-
-      expect(mockHandleLanguageSelected).toHaveBeenCalledWith('pt-pt');
+      expect(patchPreferences).toHaveBeenCalledWith('user123', { prefLang: 'pt-pt' });
+      expect(postSetLang).toHaveBeenCalledWith('pt-pt');
     });
   });
 });

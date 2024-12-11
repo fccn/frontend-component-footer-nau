@@ -114,13 +114,10 @@ class SiteFooter extends React.Component {
 
   render() {
     const {
-      supportedLanguages,
-      onLanguageSelected,
       logo,
       intl,
     } = this.props;
-    const showLanguageSelector = supportedLanguages.length > 0 && onLanguageSelected;
-    const { config } = this.context;
+    const { config, authenticatedUser } = this.context;
 
     return (
       <footer
@@ -146,18 +143,18 @@ class SiteFooter extends React.Component {
             </div>
             <FooterLinks intl={intl} />
 
-            {showLanguageSelector && (
+            {config.ENABLE_FOOTER_LANG_SELECTOR && (
               <LanguageSelector
-                options={supportedLanguages}
-                onSubmit={onLanguageSelected}
+                options={config.SITE_SUPPORTED_LENGUAGES}
+                authenticatedUser={authenticatedUser}
               />
             )}
           </div>
         </section>
         <AdditionalLogosSection />
         {
-        config.MODAL_UPDATE_TERMS_OF_SERVICE && <ModalToS />
-       }
+          config.MODAL_UPDATE_TERMS_OF_SERVICE && <ModalToS />
+        }
       </footer>
     );
   }
@@ -167,17 +164,10 @@ SiteFooter.contextType = AppContext;
 
 SiteFooter.propTypes = {
   logo: PropTypes.string,
-  onLanguageSelected: PropTypes.func,
-  supportedLanguages: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  })),
 };
 
 SiteFooter.defaultProps = {
   logo: undefined,
-  onLanguageSelected: undefined,
-  supportedLanguages: [],
 };
 
 export default injectIntl(SiteFooter);
