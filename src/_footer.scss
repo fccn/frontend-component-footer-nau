@@ -8,6 +8,15 @@ $footer-links-navigation-color: $footer-text;
   background-color: $footer-background-color;
   padding-top: 2rem;
   padding-bottom: 2rem;
+
+  .language-selector {
+    button {
+      color: $footer-text;
+      padding: 0;
+      border: unset;
+      background-color: unset;
+    }
+  }
 }
 
 .footer-copyright {

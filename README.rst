@@ -50,7 +50,7 @@ Optionally, use the following variables to configure the Terms of Service Modal 
 * ``TERMS_OF_SERVICE_URL`` - The URL for the terms of service.
 * ``TOS_AND_HONOR_CODE`` - The URL for the honor code.
 * ``ENABLE_FOOTER_LANG_SELECTOR`` - A boolean to enable the lnaguage selector in the footer component.
-* ``SITE_SUPPORTED_LENGUAGES`` - A list with all the languages to display in the selector.
+* ``SITE_SUPPORTED_LANGUAGES`` - A list with all the languages to display in the selector.
 
 Installation
 ============
