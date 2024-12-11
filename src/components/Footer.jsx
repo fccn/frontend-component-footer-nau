@@ -139,7 +139,7 @@ class SiteFooter extends React.Component {
               </a>
               <FooterCopyrightSection intl={intl} />
               {config.ENABLE_FOOTER_LANG_SELECTOR && (
-                <div class="mb-2">
+                <div className="mb-2">
                   <LanguageSelector
                     options={parseEnvSettings(config.SITE_SUPPORTED_LANGUAGES)}
                     authenticatedUser={authenticatedUser}

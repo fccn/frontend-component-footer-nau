@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useMemo } from 'react';
 import renderer from 'react-test-renderer';
-import { render, fireEvent, screen } from '@testing-library/react';
+import {
+  render, waitFor,
+} from '@testing-library/react';
 import { initializeMockApp } from '@edx/frontend-platform';
 import { IntlProvider } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
+import '@testing-library/jest-dom';
 
 import Footer from './Footer';
 import FooterSlot from '../plugin-slots/FooterSlot';
@@ -91,17 +94,21 @@ describe('<Footer />', () => {
       initializeMockApp();
       render(<FooterWithLanguageSelector />);
 
-      await fireEvent.submit(screen.getByTestId('site-footer-submit-btn'), {
-        target: {
-          elements: {
-            'site-footer-language-select': {
-              value: 'pt-pt',
-            },
-          },
-        },
+      await waitFor(() => {
+        document.querySelector('.language-selector');
       });
-      expect(patchPreferences).toHaveBeenCalledWith('user123', { prefLang: 'pt-pt' });
-      expect(postSetLang).toHaveBeenCalledWith('pt-pt');
+      expect(document.querySelectorAll('.language-selector').length).toBe(1);
+
+      document.querySelector('.language-selector>button').click();
+
+      Array.from(document.querySelectorAll('.dropdown-menu.show a')).filter((e) => e.innerHTML === 'Português')[0].click();
+
+      await waitFor(() => {
+        expect(patchPreferences).toHaveBeenCalledWith('user123', { prefLang: 'pt-pt' });
+      });
+      await waitFor(() => {
+        expect(postSetLang).toHaveBeenCalledWith('pt-pt');
+      });
     });
   });
 });
