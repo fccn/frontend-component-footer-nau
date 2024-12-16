@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { convertKeyNames, getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
-import { FormattedMessage, getLocale, injectIntl } from '@edx/frontend-platform/i18n';
+import {
+  FormattedMessage, getLocale, injectIntl, intlShape,
+} from '@edx/frontend-platform/i18n';
 import {
   Button, Form, Hyperlink, ModalDialog, useToggle, useCheckboxSetValues,
   ActionRow,
@@ -21,7 +23,7 @@ const createTOSLink = (chunks, url) => (
   </Hyperlink>
 );
 
-const ModalToS = () => {
+const ModalToS = ({ intl }) => {
   const [tosPreference, setTosPreference] = useState(undefined);
   const [isOpen, open, close] = useToggle(false);
   const { width } = useWindowSize();
@@ -86,7 +88,7 @@ const ModalToS = () => {
 
   return (
     <ModalDialog
-      title="Modal Terms of Service"
+      title={intl.formatMessage({ id: 'modalToS.modalDialog.title', description: 'The Modal Terms of Service Title', defaultMessage: 'Modal accept Terms of Service' })}
       isBlocking
       isOpen={isOpen}
       onClose={close}
@@ -167,6 +169,10 @@ const ModalToS = () => {
       </ModalDialog.Body>
     </ModalDialog>
   );
+};
+
+ModalToS.propTypes = {
+  intl: intlShape.isRequired,
 };
 
 export default injectIntl(ModalToS);
