@@ -155,7 +155,7 @@ class SiteFooter extends React.Component {
         </section>
         <AdditionalLogosSection />
         {
-          config.MODAL_UPDATE_TERMS_OF_SERVICE && <ModalToS />
+          config.MODAL_UPDATE_TERMS_OF_SERVICE && <ModalToS intl={intl} />
         }
       </footer>
     );
