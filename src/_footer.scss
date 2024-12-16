@@ -98,3 +98,14 @@ $footer-links-navigation-color: $footer-text;
     }
   }
 }
+
+.modal-terms-of-service {
+  .pgn__form-label{
+    .standalone-link {
+      &:before {
+        // Add a white space before MODAL TOS checkbox links
+        content: "\00a0";
+      }
+    }
+  }
+}
