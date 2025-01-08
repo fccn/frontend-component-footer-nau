@@ -48,7 +48,7 @@ const ModalToS = ({ intl }) => {
   const {
     dateJoined,
     username,
-  } = getAuthenticatedUser();
+  } = getAuthenticatedUser() ?? {};
 
   const lang = getLocale() || 'en';
   const tosKey = `update_terms_of_service_${dateIso8601?.replaceAll('-', '_')}`;
