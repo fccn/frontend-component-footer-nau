@@ -32,7 +32,7 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
           className="footer-copyright"
         >
           © 
-          2024
+          2025
            - FCT|FCCN 
           All rights reserved
         </div>
@@ -114,7 +114,7 @@ exports[`<Footer /> renders correctly renders without a language selector 1`] = 
           className="footer-copyright"
         >
           © 
-          2024
+          2025
            - FCT|FCCN 
           All rights reserved
         </div>
@@ -156,7 +156,7 @@ exports[`<Footer /> renders correctly renders without a language selector in pt-
           className="footer-copyright"
         >
           © 
-          2024
+          2025
            - FCT|FCCN 
           All rights reserved
         </div>
