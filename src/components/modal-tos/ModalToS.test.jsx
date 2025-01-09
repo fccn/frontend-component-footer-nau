@@ -28,8 +28,8 @@ const mockUser = {
 
 const messagesPt = {
   'modalToS.dataAuthorization.checkbox.label': 'Li e compreendi a&nbsp;<a>Política de Privacidade</a>',
-  'modalToS.termsOfService.checkbox.label': 'Li e compreendi o {platformName}&nbsp;<a>Termos e Condições</a>',
-  'modalToS.honorCode.checkbox.label': 'Li e compreendi o {platformName}&nbsp;<a>Honor Code</a>',
+  'modalToS.termsOfService.checkbox.label': 'Li e compreendi os <a>Termos e Condições</a>',
+  'modalToS.honorCode.checkbox.label': 'Li e compreendi o <a>Código de Honra</a>',
   'modalToS.acceptance.button': 'Aceito os novos termos de serviço',
 };
 // eslint-disable-next-line react/prop-types
