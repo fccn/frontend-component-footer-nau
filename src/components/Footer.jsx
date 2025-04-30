@@ -63,7 +63,7 @@ const AdditionalLogosSection = () => {
 };
 
 const FooterCopyrightSection = ({ intl }) => (
-  <div className="footer-copyright">
+  <div className="footer-copyright__text">
     &copy; {new Date().getFullYear()} - FCT|FCCN {intl.formatMessage(messages['footer.copyright.message'])}
   </div>
 );
@@ -123,6 +123,7 @@ class SiteFooter extends React.Component {
       <footer
         role="contentinfo"
       >
+        <AdditionalLogosSection />
         <section className="footer-navigation">
           <div className="container-xl d-xl-flex justify-content-between py-3">
             <div className="footer-navigation__brand d-flex flex-column justify-content-between px-4">
@@ -137,7 +138,6 @@ class SiteFooter extends React.Component {
                   alt={intl.formatMessage(messages['footer.logo.altText'])}
                 />
               </a>
-              <FooterCopyrightSection intl={intl} />
               {config.ENABLE_FOOTER_LANG_SELECTOR && (
                 <div className="mb-2">
                   <LanguageSelector
@@ -150,10 +150,12 @@ class SiteFooter extends React.Component {
               <FooterPoweredBy intl={intl} />
             </div>
             <FooterLinks intl={intl} />
-
           </div>
         </section>
-        <AdditionalLogosSection />
+        <section className="footer-copyright">
+          <div className="footer-copyright__before" />
+          <FooterCopyrightSection intl={intl} />
+        </section>
         {
           config.MODAL_UPDATE_TERMS_OF_SERVICE && <ModalToS intl={intl} />
         }

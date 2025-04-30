@@ -29,14 +29,6 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
           />
         </a>
         <div
-          className="footer-copyright"
-        >
-          © 
-          2025
-           - FCT|FCCN 
-          All rights reserved
-        </div>
-        <div
           className="mb-2"
         >
           <div
@@ -79,6 +71,21 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
       </div>
     </div>
   </section>
+  <section
+    className="footer-copyright"
+  >
+    <div
+      className="footer-copyright__before"
+    />
+    <div
+      className="footer-copyright__text"
+    >
+      © 
+      2025
+       - FCT|FCCN 
+      All rights reserved
+    </div>
+  </section>
 </footer>
 `;
 
@@ -110,15 +117,22 @@ exports[`<Footer /> renders correctly renders without a language selector 1`] = 
             }
           />
         </a>
-        <div
-          className="footer-copyright"
-        >
-          © 
-          2025
-           - FCT|FCCN 
-          All rights reserved
-        </div>
       </div>
+    </div>
+  </section>
+  <section
+    className="footer-copyright"
+  >
+    <div
+      className="footer-copyright__before"
+    />
+    <div
+      className="footer-copyright__text"
+    >
+      © 
+      2025
+       - FCT|FCCN 
+      All rights reserved
     </div>
   </section>
 </footer>
@@ -152,15 +166,22 @@ exports[`<Footer /> renders correctly renders without a language selector in pt-
             }
           />
         </a>
-        <div
-          className="footer-copyright"
-        >
-          © 
-          2025
-           - FCT|FCCN 
-          All rights reserved
-        </div>
       </div>
+    </div>
+  </section>
+  <section
+    className="footer-copyright"
+  >
+    <div
+      className="footer-copyright__before"
+    />
+    <div
+      className="footer-copyright__text"
+    >
+      © 
+      2025
+       - FCT|FCCN 
+      All rights reserved
     </div>
   </section>
 </footer>
