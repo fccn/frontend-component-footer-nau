@@ -75,15 +75,16 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
     className="footer-copyright"
   >
     <div
-      className="footer-copyright__before"
-    />
-    <div
-      className="footer-copyright__text"
+      className="container-xl py-3 px-4"
     >
-      © 
-      2025
-       - FCT|FCCN 
-      All rights reserved
+      <div
+        className="footer-copyright__text"
+      >
+        © 
+        2025
+         - FCT|FCCN 
+        All rights reserved
+      </div>
     </div>
   </section>
 </footer>
@@ -124,15 +125,16 @@ exports[`<Footer /> renders correctly renders without a language selector 1`] = 
     className="footer-copyright"
   >
     <div
-      className="footer-copyright__before"
-    />
-    <div
-      className="footer-copyright__text"
+      className="container-xl py-3 px-4"
     >
-      © 
-      2025
-       - FCT|FCCN 
-      All rights reserved
+      <div
+        className="footer-copyright__text"
+      >
+        © 
+        2025
+         - FCT|FCCN 
+        All rights reserved
+      </div>
     </div>
   </section>
 </footer>
@@ -173,15 +175,16 @@ exports[`<Footer /> renders correctly renders without a language selector in pt-
     className="footer-copyright"
   >
     <div
-      className="footer-copyright__before"
-    />
-    <div
-      className="footer-copyright__text"
+      className="container-xl py-3 px-4"
     >
-      © 
-      2025
-       - FCT|FCCN 
-      All rights reserved
+      <div
+        className="footer-copyright__text"
+      >
+        © 
+        2025
+         - FCT|FCCN 
+        All rights reserved
+      </div>
     </div>
   </section>
 </footer>

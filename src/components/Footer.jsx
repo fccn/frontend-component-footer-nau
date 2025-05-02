@@ -62,6 +62,24 @@ const AdditionalLogosSection = () => {
   );
 };
 
+const InstitutionalLogosSection = () => {
+  const FOOTER_INSTITUTIONAL_LOGOS = getConfig().FOOTER_INSTITUTIONAL_LOGOS || process.env.FOOTER_INSTITUTIONAL_LOGOS;
+
+  const logos = parseEnvSettings(FOOTER_INSTITUTIONAL_LOGOS);
+
+  if (!logos) { return null; }
+
+  return (
+    <section className="footer-copyright__institutional-logos">
+      {logos.map(logo => (
+        <a href={logo.url} target="_blank" rel="noopener noreferrer">
+          <img src={logo.src} alt={logo.alt} />
+        </a>
+      ))}
+    </section>
+  )
+};
+
 const FooterCopyrightSection = ({ intl }) => (
   <div className="footer-copyright__text">
     &copy; {new Date().getFullYear()} - FCT|FCCN {intl.formatMessage(messages['footer.copyright.message'])}
@@ -153,8 +171,10 @@ class SiteFooter extends React.Component {
           </div>
         </section>
         <section className="footer-copyright">
-          <div className="footer-copyright__before" />
-          <FooterCopyrightSection intl={intl} />
+          <div className="container-xl py-3 px-4">
+            <InstitutionalLogosSection />
+            <FooterCopyrightSection intl={intl} />
+          </div>
         </section>
         {
           config.MODAL_UPDATE_TERMS_OF_SERVICE && <ModalToS intl={intl} />
