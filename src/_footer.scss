@@ -23,9 +23,20 @@ $footer-links-navigation-color: $footer-text;
 .footer-copyright {
   padding: 0 2rem;
   background-color: $footer-copyright-background-color;
-  &__before {
-    padding: 2rem;
+  &__institutional-logos {
+    padding: 2rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, .25);
+    display: flex;
+    gap: 2rem;
+
+    a {
+      border-right: 1px solid rgba(255, 255, 255, .25);
+      padding-right: 2rem;
+
+      &:last-child {
+        border: none;
+      }
+    }
   }
   &__text {
     background-color: $footer-copyright-background-color;
@@ -101,6 +112,7 @@ $footer-links-navigation-color: $footer-text;
       max-height: 4rem;
       padding: 0 .5rem;
       max-width: 100%;
+      filter: grayscale(1);
     }
 
     &:last-child {
