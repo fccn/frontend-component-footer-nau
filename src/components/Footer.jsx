@@ -40,6 +40,29 @@ const EVENT_NAMES = {
   FOOTER_LINK: 'edx.bi.footer.link',
 };
 
+const LogoItem = ({ logo }) => {
+
+  if (!logo.url) {
+    return (
+      <img src={logo.src} alt={logo.alt} />
+    )
+  }
+
+  return (
+    <a href={logo.url} target="_blank" rel="noopener noreferrer">
+      <img src={logo.src} alt={logo.alt} />
+    </a>
+  )
+};
+
+LogoItem.propTypes = {
+  logo: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    url: PropTypes.string,
+  }).isRequired,
+};
+
 const AdditionalLogosSection = () => {
   const FOOTER_ADDITIONAL_LOGOS = getConfig().FOOTER_ADDITIONAL_LOGOS || process.env.FOOTER_ADDITIONAL_LOGOS;
 
@@ -52,9 +75,7 @@ const AdditionalLogosSection = () => {
       {logos.map(line => (
         <div className="footer-additional-logos__line">
           {Array.isArray(line) && line.map(logo => (
-            <a href={logo.url} target="_blank" rel="noopener noreferrer">
-              <img src={logo.src} alt={logo.alt} />
-            </a>
+            <LogoItem logo={logo} />
           ))}
         </div>
       ))}
