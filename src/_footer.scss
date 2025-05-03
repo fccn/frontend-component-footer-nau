@@ -27,11 +27,17 @@ $footer-links-navigation-color: $footer-text;
     padding: 2rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, .25);
     display: flex;
-    gap: 2rem;
+    flex-wrap: wrap;
+    gap: 2.5rem;
 
     a {
       border-right: 1px solid rgba(255, 255, 255, .25);
-      padding-right: 2rem;
+      padding-top: 1rem;
+      padding-right: 2.5rem;
+
+      @media screen and (max-width: 768px) {
+        border: none !important;
+      }
 
       &:last-child {
         border: none;
