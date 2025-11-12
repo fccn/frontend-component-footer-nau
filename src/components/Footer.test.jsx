@@ -11,6 +11,7 @@ import '@testing-library/jest-dom';
 
 import Footer from './Footer';
 import FooterSlot from '../plugin-slots/FooterSlot';
+import StudioFooterHelpSectionSlot from '../plugin-slots/StudioFooterHelpSectionSlot';
 
 import { patchPreferences, postSetLang } from './data/api';
 
@@ -109,5 +110,34 @@ describe('<Footer />', () => {
         expect(postSetLang).toHaveBeenCalledWith('pt-pt');
       });
     });
+  });
+});
+
+describe('<StudioFooterHelpSectionSlot />', () => {
+  const SectionWithContext = ({ locale = 'es' }) => {
+    const contextValue = useMemo(() => ({
+      authenticatedUser: null,
+      config: {
+        LOGO_TRADEMARK_URL: process.env.LOGO_TRADEMARK_URL,
+        LMS_BASE_URL: process.env.LMS_BASE_URL,
+      },
+    }), []);
+
+    return (
+      <IntlProvider locale={locale}>
+        <AppContext.Provider
+          value={contextValue}
+        >
+          <StudioFooterHelpSectionSlot />
+        </AppContext.Provider>
+      </IntlProvider>
+    );
+  };
+
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(<SectionWithContext />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
