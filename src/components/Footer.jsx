@@ -1,5 +1,6 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useIntl } from '@edx/frontend-platform/i18n';
+import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import {
   APP_PUBSUB_INITIALIZED, APP_CONFIG_INITIALIZED, ensureConfig, getConfig, mergeConfig, subscribe,
@@ -139,9 +140,7 @@ class SiteFooter extends React.Component {
     this.externalLinkClickHandler = this.externalLinkClickHandler.bind(this);
   }
 
-  const showLanguageSelector = supportedLanguages.length > 0 && onLanguageSelected;
-
-  const externalLinkClickHandler = (event) => {
+  externalLinkClickHandler(event) {
     const label = event.currentTarget.getAttribute('href');
     const eventName = EVENT_NAMES.FOOTER_LINK;
     const properties = {
@@ -149,7 +148,7 @@ class SiteFooter extends React.Component {
       label,
     };
     sendTrackEvent(eventName, properties);
-  };
+  }
 
   render() {
     const {
@@ -209,6 +208,7 @@ SiteFooter.contextType = AppContext;
 
 SiteFooter.propTypes = {
   logo: PropTypes.string,
+  intl: intlShape.isRequired,
 };
 
 SiteFooter.defaultProps = {
