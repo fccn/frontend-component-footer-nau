@@ -1,0 +1,139 @@
+$footer-background-color: #090909 !default;
+$footer-copyright-background-color: #1f1f1f !default;
+$footer-text: #fff !default;
+$logo-color: $footer-text;
+$footer-social-icons: $footer-text;
+$footer-links-navigation-color: $footer-text;
+
+.footer-navigation {
+  background-color: $footer-background-color;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  .language-selector {
+    button {
+      color: $footer-text;
+      padding: 0;
+      border: unset;
+      background-color: unset;
+    }
+  }
+}
+
+.footer-copyright {
+  padding: 0 2rem;
+  background-color: $footer-copyright-background-color;
+  &__institutional-logos {
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .25);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+
+    a {
+      border-right: 1px solid rgba(255, 255, 255, .25);
+      padding-top: 1rem;
+      padding-right: 2.5rem;
+
+      @media screen and (max-width: 768px) {
+        border: none !important;
+      }
+
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+  &__text {
+    background-color: $footer-copyright-background-color;
+    color: $footer-text;
+    font-size: 1rem;
+    display: block;
+    line-height: 1.1;
+    padding: 2rem 0;
+  }
+}
+
+.footer-links-navigation {
+  color: $footer-links-navigation-color;
+  flex-basis: 260px;
+  min-width: 200px;
+  font-size: 1.1rem;
+
+  span {
+    font-weight: 600;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: .5rem .5rem .5rem 0rem;
+    }
+
+    a {
+      color: $footer-links-navigation-color;
+      padding: .35rem 0;
+    }
+  }
+}
+
+.footer-social {
+  flex-basis: 50px;
+
+  &__badge {
+    margin-right: 1.5rem;
+  }
+
+  a {
+    color: $footer-social-icons;
+  }
+}
+
+.footer-additional-logos {
+  border: 1px solid rgba(0, 0, 0, .1);
+  padding: 2rem 0;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+  }
+
+  &__line {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem 0 1.6rem 0;
+    flex-basis: 0;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    img {
+      max-height: 4rem;
+      padding: 0 .5rem;
+      max-width: 100%;
+      filter: grayscale(1);
+    }
+
+    &:last-child {
+      border: none;
+    }
+  }
+}
+
+.modal-terms-of-service {
+  .pgn__form-label{
+    .standalone-link {
+      &:before {
+        // Add a white space before MODAL TOS checkbox links
+        content: "\00a0";
+      }
+    }
+  }
+}

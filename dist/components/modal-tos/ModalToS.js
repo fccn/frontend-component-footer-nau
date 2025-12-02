@@ -1,0 +1,138 @@
+import React, { useEffect, useState } from 'react';
+import { convertKeyNames, getConfig } from '@edx/frontend-platform';
+import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
+import { FormattedMessage, getLocale, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { Button, Form, Hyperlink, ModalDialog, useToggle, useCheckboxSetValues, ActionRow, useWindowSize } from '@openedx/paragon';
+import { getUserTOSPreference, updateUserTOSPreference } from './data/api';
+import { CAMEL_CASE_KEYS } from './data/constants';
+import parseEnvSettings from '../../utils/parseData';
+const createTOSLink = (chunks, url) => /*#__PURE__*/React.createElement(Hyperlink, {
+  destination: url,
+  target: "_blank"
+}, chunks);
+const ModalToS = _ref => {
+  let {
+    intl
+  } = _ref;
+  const [tosPreference, setTosPreference] = useState(undefined);
+  const [isOpen, open, close] = useToggle(false);
+  const {
+    width
+  } = useWindowSize();
+  const checkboxLabelStyle = width < 768 ? 'd-inline-block' : null;
+  const {
+    MODAL_UPDATE_TERMS_OF_SERVICE,
+    PRIVACY_POLICY_URL,
+    TERMS_OF_SERVICE_URL,
+    TOS_AND_HONOR_CODE
+  } = getConfig();
+  const modalSettings = parseEnvSettings(MODAL_UPDATE_TERMS_OF_SERVICE) || MODAL_UPDATE_TERMS_OF_SERVICE || {};
+  const {
+    body = {},
+    title = {},
+    dateIso8601,
+    dataAuthorization = false,
+    honorCode = false,
+    termsOfService = false
+  } = convertKeyNames(modalSettings, CAMEL_CASE_KEYS);
+  const {
+    dateJoined,
+    username
+  } = getAuthenticatedUser() ?? {};
+  const lang = getLocale() || 'en';
+  const tosKey = `update_terms_of_service_${dateIso8601?.replaceAll('-', '_')}`;
+  const [checkboxValues, {
+    add,
+    remove
+  }] = useCheckboxSetValues([]);
+  useEffect(() => {
+    if (username && dateIso8601) {
+      getUserTOSPreference(username, tosKey).then(userTos => {
+        setTosPreference(userTos);
+        if (userTos === null) {
+          open();
+        }
+      });
+    }
+  }, [dateIso8601, tosKey, username, open]);
+  const setAcceptance = () => {
+    updateUserTOSPreference(username, tosKey);
+    close();
+  };
+  const numCheckBox = [dataAuthorization, termsOfService, honorCode].reduce((prev, curr) => curr ? prev + 1 : prev, 0);
+  const handleChange = e => {
+    if (e.target.checked) {
+      add(e.target.value);
+    } else {
+      remove(e.target.value);
+    }
+  };
+  if (tosPreference || !dateIso8601 || !username || !dateJoined || new Date(dateIso8601) <= new Date(dateJoined)) {
+    return null;
+  }
+  return /*#__PURE__*/React.createElement(ModalDialog, {
+    title: intl.formatMessage({
+      id: 'modalToS.modalDialog.title',
+      description: 'The Modal Terms of Service Title',
+      defaultMessage: 'Modal accept Terms of Service'
+    }),
+    isBlocking: true,
+    isOpen: isOpen,
+    onClose: close,
+    hasCloseButton: false,
+    size: "lg",
+    className: "modal-terms-of-service"
+  }, title[lang] && /*#__PURE__*/React.createElement(ModalDialog.Header, null, /*#__PURE__*/React.createElement(ModalDialog.Title, null, title[lang])), /*#__PURE__*/React.createElement(ModalDialog.Body, null, body[lang], /*#__PURE__*/React.createElement(Form, {
+    className: "my-4"
+  }, /*#__PURE__*/React.createElement(Form.CheckboxSet, {
+    name: "TOSCheckbox",
+    onChange: handleChange,
+    value: checkboxValues
+  }, dataAuthorization && /*#__PURE__*/React.createElement(Form.Checkbox, {
+    value: "dataAuthorization",
+    labelClassName: checkboxLabelStyle
+  }, /*#__PURE__*/React.createElement(FormattedMessage, {
+    id: "modalToS.dataAuthorization.checkbox.label",
+    description: "The label for the data authorization checkbox inside the TOS modal.",
+    defaultMessage: "I have read and understood the <a>Privacy Policy</a>",
+    values: {
+      a: chunks => createTOSLink(chunks, PRIVACY_POLICY_URL)
+    }
+  })), termsOfService && /*#__PURE__*/React.createElement(Form.Checkbox, {
+    value: "termsOfService",
+    labelClassName: checkboxLabelStyle
+  }, /*#__PURE__*/React.createElement(FormattedMessage, {
+    id: "modalToS.termsOfService.checkbox.label",
+    description: "The label for the terms of service checkbox inside the TOS modal.",
+    defaultMessage: "I have read, understood and accept the <a>Terms and Conditions</a>",
+    values: {
+      a: chunks => createTOSLink(chunks, TERMS_OF_SERVICE_URL)
+    }
+  })), honorCode && /*#__PURE__*/React.createElement(Form.Checkbox, {
+    value: "honorCode",
+    labelClassName: checkboxLabelStyle
+  }, /*#__PURE__*/React.createElement(FormattedMessage, {
+    id: "modalToS.honorCode.checkbox.label",
+    description: "The label for the honor code checkbox inside the TOS modal.",
+    defaultMessage: "I have read and understood the <a>Honor Code</a>",
+    values: {
+      a: chunks => createTOSLink(chunks, TOS_AND_HONOR_CODE)
+    }
+  })))), /*#__PURE__*/React.createElement(ActionRow, {
+    isStacked: true
+  }, /*#__PURE__*/React.createElement(Button, {
+    variant: "primary",
+    disabled: numCheckBox !== checkboxValues.length,
+    onClick: setAcceptance,
+    "data-testid": "modalToSButton"
+  }, /*#__PURE__*/React.createElement(FormattedMessage, {
+    id: "modalToS.acceptance.button",
+    description: "The label for the button inside the TOS modal.",
+    defaultMessage: "Accept new terms of service"
+  })))));
+};
+ModalToS.propTypes = {
+  intl: intlShape.isRequired
+};
+export default injectIntl(ModalToS);
+//# sourceMappingURL=ModalToS.js.map

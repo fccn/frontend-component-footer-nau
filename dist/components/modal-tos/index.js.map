@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["ModalToS"],"sources":["../../../src/components/modal-tos/index.jsx"],"sourcesContent":["import ModalToS from './ModalToS';\n\nexport default ModalToS;\n"],"mappings":"AAAA,OAAOA,QAAQ,MAAM,YAAY;AAEjC,eAAeA,QAAQ","ignoreList":[]}
