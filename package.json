@@ -1,6 +1,6 @@
 {
-  "name": "@nauedu/frontend-component-footer",
-  "version": "18.6.0",
+  "name": "@edx/frontend-component-footer",
+  "version": "14.6.0",
   "description": "NAU footer component for Open edX",
   "main": "dist/index.js",
   "publishConfig": {
