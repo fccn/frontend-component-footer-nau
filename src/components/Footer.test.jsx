@@ -4,6 +4,7 @@ import renderer from 'react-test-renderer';
 import {
   render, waitFor,
 } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { initializeMockApp } from '@edx/frontend-platform';
 import { IntlProvider } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
@@ -91,17 +92,27 @@ describe('<Footer />', () => {
 
   describe('handles language switching', () => {
     it('calls patchPreferences and postSetLang when a language is changed', async () => {
+      const user = userEvent.setup();
       initializeMockApp();
       render(<FooterWithLanguageSelector />);
 
       await waitFor(() => {
-        document.querySelector('.language-selector');
+        expect(document.querySelector('.language-selector')).toBeInTheDocument();
       });
       expect(document.querySelectorAll('.language-selector').length).toBe(1);
 
-      document.querySelector('.language-selector>button').click();
+      const button = document.querySelector('.language-selector>button');
+      await user.click(button);
 
-      Array.from(document.querySelectorAll('.dropdown-menu.show a')).filter((e) => e.innerHTML === 'Português')[0].click();
+      await waitFor(() => {
+        const dropdownItems = Array.from(document.querySelectorAll('.dropdown-menu.show a'));
+        expect(dropdownItems.length).toBeGreaterThan(0);
+      });
+
+      const portugueseOption = Array.from(document.querySelectorAll('.dropdown-menu.show a'))
+        .find((e) => e.innerHTML === 'Português');
+      
+      await user.click(portugueseOption);
 
       await waitFor(() => {
         expect(patchPreferences).toHaveBeenCalledWith('user123', { prefLang: 'pt-pt' });
